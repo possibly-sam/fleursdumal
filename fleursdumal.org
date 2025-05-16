@@ -1,0 +1,11 @@
+#+title: Fleurs du Mal
+#+author:  Omega Prime  
+#+options: toc:nil
+#+options: num:nil 
+#+OPTIONS:  html-postamble:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.omega-prime.pictures/scribble.css">
+#
+
+
+https://fleursdumal.org/1868-table-of-contents
+
