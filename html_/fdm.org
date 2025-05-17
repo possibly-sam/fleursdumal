@@ -1,0 +1,23 @@
+#+title: Fleurs du Mal
+#+author:  Omega Prime  
+#+options: toc:nil
+#+options: num:nil 
+#+OPTIONS:  html-postamble:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.omega-prime.pictures/scribble.css">
+
+
+
+#+BEGIN_SRC bash :exports both
+
+
+ls
+
+#+END_SRC 
+
+
+
+
+aws polly synthesize-speech --output-format ogg_vorbis --engine neural --voice-id 'Ruth' --text-type ssml --text <speak>'When by an edict of the powers supreme<p/>
+A poet's born into this world's drab space,<p/>
+His mother starts, in horror, to blaspheme<p/>
+Clenching her fists at God, who grants her grace.'</speak> 'Ruth.ogg' 2>&1

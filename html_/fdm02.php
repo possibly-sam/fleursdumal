@@ -17,11 +17,19 @@ $selectedVoice = $_POST['voice'] ?? '';
 $inputText = $_POST['text'] ?? '';
 $synthesisResult = '';
 
+$command = "";
+
 if (!empty($selectedVoice) && !empty($inputText)) {
     // Sanitize input
     $safeVoice = escapeshellarg($selectedVoice);
-    $inputText = "<speak>" . $inputText . "</speak>";
-    $safeText =  escapeshellarg(  htmlspecialchars($inputText) ) ;
+    
+    // Replace newlines with <p/> and wrap text in SSML tags
+    $formattedText = str_replace("\n", "</p><p/>", $inputText);
+    $ssmlText = "<speak><prosody rate=\"slow\"><p/>" . $formattedText . "</p></prosody></speak>";
+    
+    // Escape the SSML text
+    $safeText = escapeshellarg(htmlspecialchars($ssmlText));
+    
     $outputFile = escapeshellarg($selectedVoice . '.ogg');
 
     // Construct and execute AWS Polly synthesis command
@@ -34,17 +42,14 @@ if (!empty($selectedVoice) && !empty($inputText)) {
                "$outputFile 2>&1";
 
     $synthesisResult = shell_exec($command);
-    echo "XXX";
-    echo $safeText;
-    echo "XXX";
-    echo $command;
-    echo "XXX<br>";
 
     // Check if file was created
     if (file_exists($selectedVoice . '.ogg')) {
         $synthesisResult = "Speech synthesized successfully. File saved as $selectedVoice.ogg";
     }
 }
+
+
 
 // Filter function
 function filterVoices($voices, $genderFilter, $engineFilter, $languageFilter) {
@@ -73,9 +78,10 @@ $languages = array_unique(array_column($voices['Voices'], 'LanguageCode'));
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 1200px;
+            max-width: 89em;
             margin: 0 auto;
-            padding: 20px;
+            padding: 5em;
+            background-color:   #EEC;
         }
         table {
             border-collapse: collapse;
@@ -101,6 +107,15 @@ $languages = array_unique(array_column($voices['Voices'], 'LanguageCode'));
             background-color: #f0f0f0;
             border-radius: 5px;
         }
+        
+        .puddle {
+			padding:  2em;
+			background-color:  #CCC;
+			max-width:   55em;
+		}
+		
+		
+		
     </style>
 </head>
 <body>
@@ -153,12 +168,18 @@ $languages = array_unique(array_column($voices['Voices'], 'LanguageCode'));
     <div class="synthesis-section">
         <form method="post">
             <!-- Text Input -->
-            <div>
-                <label for="text">Enter Text to Synthesize:</label>
-                <textarea id="text" name="text" rows="4" cols="50" required><?php echo htmlspecialchars($inputText); ?></textarea>
+            <div class=puddle>
+                <label for="text">Enter Text to Synthesize:</label><br>
+                <textarea id="text" name="text" rows="8" cols="80" required><?php echo htmlspecialchars($inputText); ?></textarea>
+                <br><br>
+                
+                
+		<textarea id="command" name="command" rows="8" cols="80"><?php echo htmlspecialchars($command); ?></textarea>                
+                <br>
             </div>
 
             <!-- Voices Table -->
+            <br><br><br>
             <table>
                 <thead>
                     <tr>
