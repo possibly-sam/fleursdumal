@@ -7,7 +7,7 @@
 
 
 
-#+BEGIN_SRC bash :exports both
+#+BEGIN_SRC  :exports both
 
 
 ls

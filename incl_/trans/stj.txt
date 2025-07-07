@@ -1,0 +1,2350 @@
+START-TRANSCRIPTION-JOB()                            START-TRANSCRIPTION-JOB()
+
+
+
+NNAAMMEE
+       start-transcription-job -
+
+DDEESSCCRRIIPPTTIIOONN
+       Transcribes  the audio from a media file and applies any additional Re-
+       quest Parameters you choose to include in your request.
+
+       To make a SSttaarrttTTrraannssccrriippttiioonnJJoobb request, you must first upload your me-
+       dia  file  into an Amazon S3 bucket; you can then specify the Amazon S3
+       location of the file using the MMeeddiiaa parameter.
+
+       You must include the following parameters in your SSttaarrttTTrraannssccrriippttiioonnJJoobb
+       request:
+
+       +o rreeggiioonn : The Amazon Web Services Region where you are making your re-
+         quest. For a list of Amazon Web Services Regions supported with  Ama-
+         zon Transcribe, refer to _A_m_a_z_o_n _T_r_a_n_s_c_r_i_b_e _e_n_d_p_o_i_n_t_s _a_n_d _q_u_o_t_a_s .
+
+       +o TTrraannssccrriippttiioonnJJoobbNNaammee  :  A custom name you create for your transcrip-
+         tion job that is unique within your Amazon Web Services account.
+
+       +o MMeeddiiaa (MMeeddiiaaFFiilleeUUrrii ): The Amazon S3 location of your media file.
+
+       +o One of LLaanngguuaaggeeCCooddee , IIddeennttiiffyyLLaanngguuaaggee , or IIddeennttiiffyyMMuullttiipplleeLLaanngguuaaggeess
+         :  If  you know the language of your media file, specify it using the
+         LLaanngguuaaggeeCCooddee parameter; you can find all valid language codes in  the
+         _S_u_p_p_o_r_t_e_d _l_a_n_g_u_a_g_e_s table. If you do not know the languages spoken in
+         your media, use either IIddeennttiiffyyLLaanngguuaaggee or  IIddeennttiiffyyMMuullttiipplleeLLaanngguuaaggeess
+         and let Amazon Transcribe identify the languages for you.
+
+       See also: AWS API Documentation
+
+SSYYNNOOPPSSIISS
+            start-transcription-job
+          --transcription-job-name <value>
+          [--language-code <value>]
+          [--media-sample-rate-hertz <value>]
+          [--media-format <value>]
+          --media <value>
+          [--output-bucket-name <value>]
+          [--output-key <value>]
+          [--output-encryption-kms-key-id <value>]
+          [--kms-encryption-context <value>]
+          [--settings <value>]
+          [--model-settings <value>]
+          [--job-execution-settings <value>]
+          [--content-redaction <value>]
+          [--identify-language | --no-identify-language]
+          [--identify-multiple-languages | --no-identify-multiple-languages]
+          [--language-options <value>]
+          [--subtitles <value>]
+          [--tags <value>]
+          [--language-id-settings <value>]
+          [--toxicity-detection <value>]
+          [--cli-input-json | --cli-input-yaml]
+          [--generate-cli-skeleton <value>]
+          [--debug]
+          [--endpoint-url <value>]
+          [--no-verify-ssl]
+          [--no-paginate]
+          [--output <value>]
+          [--query <value>]
+          [--profile <value>]
+          [--region <value>]
+          [--version <value>]
+          [--color <value>]
+          [--no-sign-request]
+          [--ca-bundle <value>]
+          [--cli-read-timeout <value>]
+          [--cli-connect-timeout <value>]
+          [--cli-binary-format <value>]
+          [--no-cli-pager]
+          [--cli-auto-prompt]
+          [--no-cli-auto-prompt]
+
+OOPPTTIIOONNSS
+       ----ttrraannssccrriippttiioonn--jjoobb--nnaammee (string)
+          A  unique  name, chosen by you, for your transcription job. The name
+          that you specify is also used as the default name of your transcrip-
+          tion  output  file. If you want to specify a different name for your
+          transcription output, use the OOuuttppuuttKKeeyy parameter.
+
+          This name is case sensitive, cannot  contain  spaces,  and  must  be
+          unique within an Amazon Web Services account. If you try to create a
+          new job with the same name as an existing job, you get a CCoonnfflliiccttEExx--
+          cceeppttiioonn error.
+
+       ----llaanngguuaaggee--ccooddee (string)
+          The  language  code that represents the language spoken in the input
+          media file.
+
+          If you're unsure of the language spoken in your media file, consider
+          using  IIddeennttiiffyyLLaanngguuaaggee or IIddeennttiiffyyMMuullttiipplleeLLaanngguuaaggeess to enable auto-
+          matic language identification.
+
+          Note that you must include one of LLaanngguuaaggeeCCooddee , IIddeennttiiffyyLLaanngguuaaggee  ,
+          or  IIddeennttiiffyyMMuullttiipplleeLLaanngguuaaggeess  in  your request. If you include more
+          than one of these parameters, your transcription job fails.
+
+          For a list of supported  languages  and  their  associated  language
+          codes, refer to the _S_u_p_p_o_r_t_e_d _l_a_n_g_u_a_g_e_s table.
+
+          NNOOTTEE::
+              To  transcribe  speech  in Modern Standard Arabic (aarr--SSAA ), your
+              media file must be encoded at a sample  rate  of  16,000  Hz  or
+              higher.
+
+          Possible values:
+
+          +o aaff--ZZAA
+
+          +o aarr--AAEE
+
+          +o aarr--SSAA
+
+          +o ddaa--DDKK
+
+          +o ddee--CCHH
+
+          +o ddee--DDEE
+
+          +o eenn--AABB
+
+          +o eenn--AAUU
+
+          +o eenn--GGBB
+
+          +o eenn--IIEE
+
+          +o eenn--IINN
+
+          +o eenn--UUSS
+
+          +o eenn--WWLL
+
+          +o eess--EESS
+
+          +o eess--UUSS
+
+          +o ffaa--IIRR
+
+          +o ffrr--CCAA
+
+          +o ffrr--FFRR
+
+          +o hhee--IILL
+
+          +o hhii--IINN
+
+          +o iidd--IIDD
+
+          +o iitt--IITT
+
+          +o jjaa--JJPP
+
+          +o kkoo--KKRR
+
+          +o mmss--MMYY
+
+          +o nnll--NNLL
+
+          +o pptt--BBRR
+
+          +o pptt--PPTT
+
+          +o rruu--RRUU
+
+          +o ttaa--IINN
+
+          +o ttee--IINN
+
+          +o ttrr--TTRR
+
+          +o zzhh--CCNN
+
+          +o zzhh--TTWW
+
+          +o tthh--TTHH
+
+          +o eenn--ZZAA
+
+          +o eenn--NNZZ
+
+          +o vvii--VVNN
+
+          +o ssvv--SSEE
+
+          +o aabb--GGEE
+
+          +o aasstt--EESS
+
+          +o aazz--AAZZ
+
+          +o bbaa--RRUU
+
+          +o bbee--BBYY
+
+          +o bbgg--BBGG
+
+          +o bbnn--IINN
+
+          +o bbss--BBAA
+
+          +o ccaa--EESS
+
+          +o cckkbb--IIQQ
+
+          +o cckkbb--IIRR
+
+          +o ccss--CCZZ
+
+          +o ccyy--WWLL
+
+          +o eell--GGRR
+
+          +o eett--EETT
+
+          +o eeuu--EESS
+
+          +o ffii--FFII
+
+          +o ggll--EESS
+
+          +o gguu--IINN
+
+          +o hhaa--NNGG
+
+          +o hhrr--HHRR
+
+          +o hhuu--HHUU
+
+          +o hhyy--AAMM
+
+          +o iiss--IISS
+
+          +o kkaa--GGEE
+
+          +o kkaabb--DDZZ
+
+          +o kkkk--KKZZ
+
+          +o kknn--IINN
+
+          +o kkyy--KKGG
+
+          +o llgg--IINN
+
+          +o lltt--LLTT
+
+          +o llvv--LLVV
+
+          +o mmhhrr--RRUU
+
+          +o mmii--NNZZ
+
+          +o mmkk--MMKK
+
+          +o mmll--IINN
+
+          +o mmnn--MMNN
+
+          +o mmrr--IINN
+
+          +o mmtt--MMTT
+
+          +o nnoo--NNOO
+
+          +o oorr--IINN
+
+          +o ppaa--IINN
+
+          +o ppll--PPLL
+
+          +o ppss--AAFF
+
+          +o rroo--RROO
+
+          +o rrww--RRWW
+
+          +o ssii--LLKK
+
+          +o sskk--SSKK
+
+          +o ssll--SSII
+
+          +o ssoo--SSOO
+
+          +o ssrr--RRSS
+
+          +o ssuu--IIDD
+
+          +o ssww--BBII
+
+          +o ssww--KKEE
+
+          +o ssww--RRWW
+
+          +o ssww--TTZZ
+
+          +o ssww--UUGG
+
+          +o ttll--PPHH
+
+          +o tttt--RRUU
+
+          +o uugg--CCNN
+
+          +o uukk--UUAA
+
+          +o uuzz--UUZZ
+
+          +o wwoo--SSNN
+
+          +o zzuu--ZZAA
+
+       ----mmeeddiiaa--ssaammppllee--rraattee--hheerrttzz (integer)
+          The  sample  rate,  in hertz, of the audio track in your input media
+          file.
+
+          If you do not specify the media sample rate, Amazon  Transcribe  de-
+          termines  it  for you. If you specify the sample rate, it must match
+          the rate detected by Amazon Transcribe. If there's  a  mismatch  be-
+          tween  the  value  that you specify and the value detected, your job
+          fails. In most cases, you can omit MMeeddiiaaSSaammpplleeRRaatteeHHeerrttzz and let Ama-
+          zon Transcribe determine the sample rate.
+
+       ----mmeeddiiaa--ffoorrmmaatt (string)
+          Specify the format of your input media file.
+
+          Possible values:
+
+          +o mmpp33
+
+          +o mmpp44
+
+          +o wwaavv
+
+          +o ffllaacc
+
+          +o oogggg
+
+          +o aammrr
+
+          +o wweebbmm
+
+          +o mm44aa
+
+       ----mmeeddiiaa (structure)
+          Describes  the  Amazon S3 location of the media file you want to use
+          in your request.
+
+          MediaFileUri -> (string)
+              The Amazon S3 location of the media file you want to transcribe.
+              For example:
+
+              +o ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//mmyy--mmeeddiiaa--ffiillee..ffllaacc
+
+              +o ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//mmeeddiiaa--ffiilleess//mmyy--mmeeddiiaa--ffiillee..ffllaacc
+
+              Note  that  the  Amazon S3 bucket that contains your input media
+              must be located in the same Amazon  Web  Services  Region  where
+              you're making your transcription request.
+
+          RedactedMediaFileUri -> (string)
+              The Amazon S3 location of the media file you want to redact. For
+              example:
+
+              +o ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//mmyy--mmeeddiiaa--ffiillee..ffllaacc
+
+              +o ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//mmeeddiiaa--ffiilleess//mmyy--mmeeddiiaa--ffiillee..ffllaacc
+
+              Note that the Amazon S3 bucket that contains  your  input  media
+              must  be  located  in  the same Amazon Web Services Region where
+              you're making your transcription request.
+
+              WWAARRNNIINNGG::
+                 RReeddaacctteeddMMeeddiiaaFFiilleeUUrrii produces a redacted audio file in  addi-
+                 tion  to a redacted transcript. It is only supported for Call
+                 Analytics (SSttaarrttCCaallllAAnnaallyyttiiccssJJoobb ) transcription requests.
+
+       Shorthand Syntax:
+
+          MediaFileUri=string,RedactedMediaFileUri=string
+
+       JSON Syntax:
+
+          {
+            "MediaFileUri": "string",
+            "RedactedMediaFileUri": "string"
+          }
+
+       ----oouuttppuutt--bbuucckkeett--nnaammee (string)
+          The name of the Amazon S3 bucket where you want  your  transcription
+          output  stored.  Do  not  include  the SS33:://// prefix of the specified
+          bucket.
+
+          If you want your output to go to a sub-folder of this bucket,  spec-
+          ify  it using the OOuuttppuuttKKeeyy parameter; OOuuttppuuttBBuucckkeettNNaammee only accepts
+          the name of a bucket.
+
+          For example, if  you  want  your  output  stored  in  SS33::////DDOOCC--EEXXAAMM--
+          PPLLEE--BBUUCCKKEETT  ,  set OOuuttppuuttBBuucckkeettNNaammee to DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT . However,
+          if   you    want    your    output    stored    in    SS33::////DDOOCC--EEXXAAMM--
+          PPLLEE--BBUUCCKKEETT//tteesstt--ffiilleess//  , set OOuuttppuuttBBuucckkeettNNaammee to DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT
+          and OOuuttppuuttKKeeyy to tteesstt--ffiilleess// .
+
+          Note that Amazon Transcribe must have permission to use  the  speci-
+          fied location. You can change Amazon S3 permissions using the _A_m_a_z_o_n
+          _W_e_b _S_e_r_v_i_c_e_s _M_a_n_a_g_e_m_e_n_t _C_o_n_s_o_l_e . See also _P_e_r_m_i_s_s_i_o_n_s _R_e_q_u_i_r_e_d  _f_o_r
+          _I_A_M _U_s_e_r _R_o_l_e_s .
+
+          If  you  do not specify OOuuttppuuttBBuucckkeettNNaammee , your transcript is placed
+          in a service-managed Amazon S3 bucket and you are  provided  with  a
+          URI to access your transcript.
+
+       ----oouuttppuutt--kkeeyy (string)
+          Use in combination with OOuuttppuuttBBuucckkeettNNaammee to specify the output loca-
+          tion of your transcript and, optionally, a unique name for your out-
+          put file. The default name for your transcription output is the same
+          as the name you specified for your transcription job (TTrraannssccrriippttiioonn--
+          JJoobbNNaammee ).
+
+          Here are some examples of how you can use OOuuttppuuttKKeeyy :
+
+          +o If  you  specify  'DOC-EXAMPLE-BUCKET' as the OOuuttppuuttBBuucckkeettNNaammee and
+            'my-transcript.json' as the OOuuttppuuttKKeeyy , your transcription  output
+            path is ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//mmyy--ttrraannssccrriipptt..jjssoonn .
+
+          +o If  you  specify 'my-first-transcription' as the TTrraannssccrriippttiioonnJJoobb--
+            NNaammee  ,  'DOC-EXAMPLE-BUCKET'  as  the  OOuuttppuuttBBuucckkeettNNaammee   ,   and
+            'my-transcript'  as the OOuuttppuuttKKeeyy , your transcription output path
+            is       ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//mmyy--ttrraannssccrriipptt//mmyy--ffiirrsstt--ttrraannssccrriipp--
+            ttiioonn..jjssoonn .
+
+          +o If  you  specify  'DOC-EXAMPLE-BUCKET' as the OOuuttppuuttBBuucckkeettNNaammee and
+            'test-files/my-transcript.json' as the OOuuttppuuttKKeeyy , your transcrip-
+            tion  output  path  is ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//tteesstt--ffiilleess//mmyy--ttrraann--
+            ssccrriipptt..jjssoonn .
+
+          +o If you specify 'my-first-transcription' as  the  TTrraannssccrriippttiioonnJJoobb--
+            NNaammee   ,   'DOC-EXAMPLE-BUCKET'  as  the  OOuuttppuuttBBuucckkeettNNaammee  ,  and
+            'test-files/my-transcript' as the OOuuttppuuttKKeeyy ,  your  transcription
+            output    path    is   ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//tteesstt--ffiilleess//mmyy--ttrraann--
+            ssccrriipptt//mmyy--ffiirrsstt--ttrraannssccrriippttiioonn..jjssoonn .
+
+          If you specify the name of  an  Amazon  S3  bucket  sub-folder  that
+          doesn't exist, one is created for you.
+
+       ----oouuttppuutt--eennccrryyppttiioonn--kkmmss--kkeeyy--iidd (string)
+          The KMS key you want to use to encrypt your transcription output.
+
+          If  using  a key located in the ccuurrrreenntt Amazon Web Services account,
+          you can specify your KMS key in one of four ways:
+
+          +o Use    the     KMS     key     ID     itself.     For     example,
+            11223344aabbccdd--1122aabb--3344ccdd--5566eeff--11223344556677889900aabb .
+
+          +o Use an alias for the KMS key ID. For example, aalliiaass//EExxaammpplleeAAlliiaass .
+
+          +o Use  the  Amazon Resource Name (ARN) for the KMS key ID. For exam-
+            ple,                                        aarrnn::aawwss::kkmmss::rreeggiioonn::aacc--
+            ccoouunntt--IIDD::kkeeyy//11223344aabbccdd--1122aabb--3344ccdd--5566eeff--11223344556677889900aabb .
+
+          +o Use  the  ARN  for the KMS key alias. For example, aarrnn::aawwss::kkmmss::rree--
+            ggiioonn::aaccccoouunntt--IIDD::aalliiaass//EExxaammpplleeAAlliiaass .
+
+          If using a key located in a ddiiffffeerreenntt Amazon  Web  Services  account
+          than  the  current Amazon Web Services account, you can specify your
+          KMS key in one of two ways:
+
+          +o Use the ARN for the  KMS  key  ID.  For  example,  aarrnn::aawwss::kkmmss::rree--
+            ggiioonn::aaccccoouunntt--IIDD::kkeeyy//11223344aabbccdd--1122aabb--3344ccdd--5566eeff--11223344556677889900aabb .
+
+          +o Use  the  ARN  for the KMS key alias. For example, aarrnn::aawwss::kkmmss::rree--
+            ggiioonn::aaccccoouunntt--IIDD::aalliiaass//EExxaammpplleeAAlliiaass .
+
+          If you do not specify an encryption key, your  output  is  encrypted
+          with the default Amazon S3 key (SSE-S3).
+
+          If you specify a KMS key to encrypt your output, you must also spec-
+          ify an output location using the OOuuttppuuttLLooccaattiioonn parameter.
+
+          Note that the role making the request must have  permission  to  use
+          the specified KMS key.
+
+       ----kkmmss--eennccrryyppttiioonn--ccoonntteexxtt (map)
+          A map of plain text, non-secret key:value pairs, known as encryption
+          context pairs, that provide an added  layer  of  security  for  your
+          data.   For   more  information,  see  _K_M_S  _e_n_c_r_y_p_t_i_o_n  _c_o_n_t_e_x_t  and
+          _A_s_y_m_m_e_t_r_i_c _k_e_y_s _i_n _K_M_S .
+
+          key -> (string)
+
+          value -> (string)
+
+       Shorthand Syntax:
+
+          KeyName1=string,KeyName2=string
+
+       JSON Syntax:
+
+          {"string": "string"
+            ...}
+
+       ----sseettttiinnggss (structure)
+          Specify additional optional  settings  in  your  request,  including
+          channel  identification,  alternative transcriptions, speaker parti-
+          tioning. You can use that to apply custom vocabularies  and  vocabu-
+          lary filters.
+
+          If  you  want  to include a custom vocabulary or a custom vocabulary
+          filter (or both) with your request but ddoo nnoott want to use  automatic
+          language identification, use SSeettttiinnggss with the VVooccaabbuullaarryyNNaammee or VVoo--
+          ccaabbuullaarryyFFiilltteerrNNaammee (or both) sub-parameter.
+
+          If you're using automatic language identification with your  request
+          and want to include a custom language model, a custom vocabulary, or
+          a custom vocabulary filter, use instead the parameter with the  LLaann--
+          gguuaaggeeMMooddeellNNaammee  , VVooccaabbuullaarryyNNaammee or VVooccaabbuullaarryyFFiilltteerrNNaammee sub-parame-
+          ters.
+
+          VocabularyName -> (string)
+              The name of the custom vocabulary you want to use in your  tran-
+              scription  job request. This name is case sensitive, cannot con-
+              tain spaces, and must be unique within an  Amazon  Web  Services
+              account.
+
+          ShowSpeakerLabels -> (boolean)
+              Enables speaker partitioning (diarization) in your transcription
+              output. Speaker partitioning labels the speech  from  individual
+              speakers in your media file.
+
+              If  you  enable SShhoowwSSppeeaakkeerrLLaabbeellss in your request, you must also
+              include MMaaxxSSppeeaakkeerrLLaabbeellss .
+
+              For more information, see _P_a_r_t_i_t_i_o_n_i_n_g _s_p_e_a_k_e_r_s _(_d_i_a_r_i_z_a_t_i_o_n_) .
+
+          MaxSpeakerLabels -> (integer)
+              Specify the maximum number of speakers you want to partition  in
+              your media.
+
+              Note  that  if your media contains more speakers than the speci-
+              fied number, multiple speakers are treated as a single speaker.
+
+              If you specify the MMaaxxSSppeeaakkeerrLLaabbeellss  field,  you  must  set  the
+              SShhoowwSSppeeaakkeerrLLaabbeellss field to true.
+
+          ChannelIdentification -> (boolean)
+              Enables channel identification in multi-channel audio.
+
+              Channel identification transcribes the audio on each channel in-
+              dependently, then appends the output for each channel  into  one
+              transcript.
+
+              For more information, see _T_r_a_n_s_c_r_i_b_i_n_g _m_u_l_t_i_-_c_h_a_n_n_e_l _a_u_d_i_o .
+
+          ShowAlternatives -> (boolean)
+              To  include alternative transcriptions within your transcription
+              output, include SShhoowwAAlltteerrnnaattiivveess in your transcription request.
+
+              If you have multi-channel audio and do not enable channel  iden-
+              tification, your audio is transcribed in a continuous manner and
+              your transcript does not separate the speech by channel.
+
+              If you include SShhoowwAAlltteerrnnaattiivveess , you must also  include  MMaaxxAAll--
+              tteerrnnaattiivveess  ,  which  is the maximum number of alternative tran-
+              scriptions you want Amazon Transcribe to generate.
+
+              For more information, see _A_l_t_e_r_n_a_t_i_v_e _t_r_a_n_s_c_r_i_p_t_i_o_n_s .
+
+          MaxAlternatives -> (integer)
+              Indicate the maximum number of  alternative  transcriptions  you
+              want Amazon Transcribe to include in your transcript.
+
+              If  you  select  a number greater than the number of alternative
+              transcriptions generated by Amazon Transcribe, only  the  actual
+              number of alternative transcriptions are included.
+
+              If  you  include  MMaaxxAAlltteerrnnaattiivveess in your request, you must also
+              include SShhoowwAAlltteerrnnaattiivveess with a value of ttrruuee .
+
+              For more information, see _A_l_t_e_r_n_a_t_i_v_e _t_r_a_n_s_c_r_i_p_t_i_o_n_s .
+
+          VocabularyFilterName -> (string)
+              The name of the custom vocabulary filter you want to use in your
+              transcription  job  request. This name is case sensitive, cannot
+              contain spaces, and must be unique within an Amazon Web Services
+              account.
+
+              Note  that  if you include VVooccaabbuullaarryyFFiilltteerrNNaammee in your request,
+              you must also include VVooccaabbuullaarryyFFiilltteerrMMeetthhoodd .
+
+          VocabularyFilterMethod -> (string)
+              Specify how you want your custom vocabulary  filter  applied  to
+              your transcript.
+
+              To replace words with ****** , choose mmaasskk .
+
+              To delete words, choose rreemmoovvee .
+
+              To flag words without changing them, choose ttaagg .
+
+       Shorthand Syntax:
+
+          VocabularyName=string,ShowSpeakerLabels=boolean,MaxSpeakerLabels=integer,ChannelIdentification=boolean,ShowAlternatives=boolean,MaxAlternatives=integer,VocabularyFilterName=string,VocabularyFilterMethod=string
+
+       JSON Syntax:
+
+          {
+            "VocabularyName": "string",
+            "ShowSpeakerLabels": true|false,
+            "MaxSpeakerLabels": integer,
+            "ChannelIdentification": true|false,
+            "ShowAlternatives": true|false,
+            "MaxAlternatives": integer,
+            "VocabularyFilterName": "string",
+            "VocabularyFilterMethod": "remove"|"mask"|"tag"
+          }
+
+       ----mmooddeell--sseettttiinnggss (structure)
+          Specify  the  custom  language  model  you want to include with your
+          transcription job. If you include MMooddeellSSeettttiinnggss in your request, you
+          must include the LLaanngguuaaggeeMMooddeellNNaammee sub-parameter.
+
+          For more information, see _C_u_s_t_o_m _l_a_n_g_u_a_g_e _m_o_d_e_l_s .
+
+          LanguageModelName -> (string)
+              The  name of the custom language model you want to use when pro-
+              cessing your transcription job. Note that custom language  model
+              names are case sensitive.
+
+              The  language  of the specified custom language model must match
+              the language code that you specify  in  your  transcription  re-
+              quest.  If the languages do not match, the custom language model
+              isn't applied. There are no errors or warnings associated with a
+              language mismatch.
+
+       Shorthand Syntax:
+
+          LanguageModelName=string
+
+       JSON Syntax:
+
+          {
+            "LanguageModelName": "string"
+          }
+
+       ----jjoobb--eexxeeccuuttiioonn--sseettttiinnggss (structure)
+          Makes  it  possible  to  control  how your transcription job is pro-
+          cessed. Currently, the only  JJoobbEExxeeccuuttiioonnSSeettttiinnggss  modification  you
+          can choose is enabling job queueing using the AAlllloowwDDeeffeerrrreeddEExxeeccuuttiioonn
+          sub-parameter.
+
+          If you include JJoobbEExxeeccuuttiioonnSSeettttiinnggss in your request, you  must  also
+          include  the  sub-parameters: AAlllloowwDDeeffeerrrreeddEExxeeccuuttiioonn and DDaattaaAAcccceessss--
+          RRoolleeAArrnn .
+
+          AllowDeferredExecution -> (boolean)
+              Makes it possible to enable job queuing when your concurrent re-
+              quest  limit  is exceeded. When AAlllloowwDDeeffeerrrreeddEExxeeccuuttiioonn is set to
+              ttrruuee , transcription job requests are placed in  a  queue  until
+              the  number of jobs falls below the concurrent request limit. If
+              AAlllloowwDDeeffeerrrreeddEExxeeccuuttiioonn is set to ffaallssee and the number  of  tran-
+              scription  job requests exceed the concurrent request limit, you
+              get a LLiimmiittEExxcceeeeddeeddEExxcceeppttiioonn error.
+
+              If you include AAlllloowwDDeeffeerrrreeddEExxeeccuuttiioonn in your request, you  must
+              also include DDaattaaAAcccceessssRRoolleeAArrnn .
+
+          DataAccessRoleArn -> (string)
+              The  Amazon  Resource Name (ARN) of an IAM role that has permis-
+              sions to access the Amazon S3 bucket that  contains  your  input
+              files.  If the role that you specify doesnt have the appropriate
+              permissions to access the specified Amazon S3 location, your re-
+              quest fails.
+
+              IAM   role   ARNs   have   the   format   aarrnn::ppaarrttiittiioonn::iiaamm::::aacc--
+              ccoouunntt::rroollee//rroollee--nnaammee--wwiitthh--ppaatthh       .       For        example:
+              aarrnn::aawwss::iiaamm::::111111112222222233333333::rroollee//AAddmmiinn . For more information, see
+              _I_A_M _A_R_N_s .
+
+              Note that if you include DDaattaaAAcccceessssRRoolleeAArrnn in your request,  you
+              must also include AAlllloowwDDeeffeerrrreeddEExxeeccuuttiioonn .
+
+       Shorthand Syntax:
+
+          AllowDeferredExecution=boolean,DataAccessRoleArn=string
+
+       JSON Syntax:
+
+          {
+            "AllowDeferredExecution": true|false,
+            "DataAccessRoleArn": "string"
+          }
+
+       ----ccoonntteenntt--rreeddaaccttiioonn (structure)
+          Makes  it  possible to redact or flag specified personally identifi-
+          able information (PII) in your transcript. If you use  CCoonntteennttRReeddaacc--
+          ttiioonn , you must also include the sub-parameters: RReeddaaccttiioonnOOuuttppuutt and
+          RReeddaaccttiioonnTTyyppee . You can optionally include PPiiiiEEnnttiittyyTTyyppeess to  choose
+          which  types of PII you want to redact. If you do not include PPiiiiEEnn--
+          ttiittyyTTyyppeess in your request, all PII is redacted.
+
+          RedactionType -> (string)
+              Specify the category of information  you  want  to  redact;  PPIIII
+              (personally  identifiable  information) is the only valid value.
+              You can use PPiiiiEEnnttiittyyTTyyppeess to choose which types of PII you want
+              to redact. If you do not include PPiiiiEEnnttiittyyTTyyppeess in your request,
+              all PII is redacted.
+
+          RedactionOutput -> (string)
+              Specify if you want only a redacted transcript, or if you want a
+              redacted and an unredacted transcript.
+
+              When  you  choose  rreeddaacctteedd  Amazon  Transcribe  creates  only a
+              redacted transcript.
+
+              When you choose rreeddaacctteedd__aanndd__uunnrreeddaacctteedd Amazon  Transcribe  cre-
+              ates  a  redacted  and an unredacted transcript (as two separate
+              files).
+
+          PiiEntityTypes -> (list)
+              Specify which types of personally identifiable information (PII)
+              you  want  to redact in your transcript. You can include as many
+              types as you'd like, or you can select AALLLL . If you do  not  in-
+              clude PPiiiiEEnnttiittyyTTyyppeess in your request, all PII is redacted.
+
+              (string)
+
+       Shorthand Syntax:
+
+          RedactionType=string,RedactionOutput=string,PiiEntityTypes=string,string
+
+       JSON Syntax:
+
+          {
+            "RedactionType": "PII",
+            "RedactionOutput": "redacted"|"redacted_and_unredacted",
+            "PiiEntityTypes": ["BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"ALL", ...]
+          }
+
+       ----iiddeennttiiffyy--llaanngguuaaggee | ----nnoo--iiddeennttiiffyy--llaanngguuaaggee (boolean)
+          Enables  automatic language identification in your transcription job
+          request. Use this parameter if your media  file  contains  only  one
+          language.  If  your media contains multiple languages, use IIddeennttiiffyy--
+          MMuullttiipplleeLLaanngguuaaggeess instead.
+
+          If you include IIddeennttiiffyyLLaanngguuaaggee , you can optionally include a  list
+          of  language  codes,  using  LLaanngguuaaggeeOOppttiioonnss , that you think may be
+          present in your  media  file.  Including  LLaanngguuaaggeeOOppttiioonnss  restricts
+          IIddeennttiiffyyLLaanngguuaaggee  to  only  the  language  options that you specify,
+          which can improve transcription accuracy.
+
+          If you want to apply a custom language model, a  custom  vocabulary,
+          or a custom vocabulary filter to your automatic language identifica-
+          tion request, include LLaanngguuaaggeeIIddSSeettttiinnggss with the  relevant  sub-pa-
+          rameters (VVooccaabbuullaarryyNNaammee , LLaanngguuaaggeeMMooddeellNNaammee , and VVooccaabbuullaarryyFFiilltteerr--
+          NNaammee ). If you include LLaanngguuaaggeeIIddSSeettttiinnggss , also include LLaanngguuaaggeeOOpp--
+          ttiioonnss .
+
+          Note  that you must include one of LLaanngguuaaggeeCCooddee , IIddeennttiiffyyLLaanngguuaaggee ,
+          or IIddeennttiiffyyMMuullttiipplleeLLaanngguuaaggeess in your request. If  you  include  more
+          than one of these parameters, your transcription job fails.
+
+       ----iiddeennttiiffyy--mmuullttiippllee--llaanngguuaaggeess | ----nnoo--iiddeennttiiffyy--mmuullttiippllee--llaanngguuaaggeess (bool-
+       ean)
+          Enables automatic multi-language identification in  your  transcrip-
+          tion  job  request.  Use  this parameter if your media file contains
+          more than one language. If your media contains  only  one  language,
+          use IIddeennttiiffyyLLaanngguuaaggee instead.
+
+          If  you  include  IIddeennttiiffyyMMuullttiipplleeLLaanngguuaaggeess , you can optionally in-
+          clude a list of language codes, using  LLaanngguuaaggeeOOppttiioonnss  ,  that  you
+          think  may  be present in your media file. Including LLaanngguuaaggeeOOppttiioonnss
+          restricts IIddeennttiiffyyLLaanngguuaaggee to only the  language  options  that  you
+          specify, which can improve transcription accuracy.
+
+          If you want to apply a custom vocabulary or a custom vocabulary fil-
+          ter to your automatic language identification request, include  LLaann--
+          gguuaaggeeIIddSSeettttiinnggss with the relevant sub-parameters (VVooccaabbuullaarryyNNaammee and
+          VVooccaabbuullaarryyFFiilltteerrNNaammee ). If you include LLaanngguuaaggeeIIddSSeettttiinnggss , also in-
+          clude LLaanngguuaaggeeOOppttiioonnss .
+
+          Note  that you must include one of LLaanngguuaaggeeCCooddee , IIddeennttiiffyyLLaanngguuaaggee ,
+          or IIddeennttiiffyyMMuullttiipplleeLLaanngguuaaggeess in your request. If  you  include  more
+          than one of these parameters, your transcription job fails.
+
+       ----llaanngguuaaggee--ooppttiioonnss (list)
+          You  can  specify two or more language codes that represent the lan-
+          guages you think may be present in your media. Including  more  than
+          five  is  not  recommended.  If  you're  unsure  what  languages are
+          present, do not include this parameter.
+
+          If you include LLaanngguuaaggeeOOppttiioonnss in your request, you  must  also  in-
+          clude IIddeennttiiffyyLLaanngguuaaggee .
+
+          For more information, refer to _S_u_p_p_o_r_t_e_d _l_a_n_g_u_a_g_e_s .
+
+          To  transcribe speech in Modern Standard Arabic (aarr--SSAA ), your media
+          file must be encoded at a sample rate of 16,000 Hz or higher.
+
+          (string)
+
+       Syntax:
+
+          "string" "string" ...
+
+          Where valid values are:
+            af-ZA
+            ar-AE
+            ar-SA
+            da-DK
+            de-CH
+            de-DE
+            en-AB
+            en-AU
+            en-GB
+            en-IE
+            en-IN
+            en-US
+            en-WL
+            es-ES
+            es-US
+            fa-IR
+            fr-CA
+            fr-FR
+            he-IL
+            hi-IN
+            id-ID
+            it-IT
+            ja-JP
+            ko-KR
+            ms-MY
+            nl-NL
+            pt-BR
+            pt-PT
+            ru-RU
+            ta-IN
+            te-IN
+            tr-TR
+            zh-CN
+            zh-TW
+            th-TH
+            en-ZA
+            en-NZ
+            vi-VN
+            sv-SE
+            ab-GE
+            ast-ES
+            az-AZ
+            ba-RU
+            be-BY
+            bg-BG
+            bn-IN
+            bs-BA
+            ca-ES
+            ckb-IQ
+            ckb-IR
+            cs-CZ
+            cy-WL
+            el-GR
+            et-ET
+            eu-ES
+            fi-FI
+            gl-ES
+            gu-IN
+            ha-NG
+            hr-HR
+            hu-HU
+            hy-AM
+            is-IS
+            ka-GE
+            kab-DZ
+            kk-KZ
+            kn-IN
+            ky-KG
+            lg-IN
+            lt-LT
+            lv-LV
+            mhr-RU
+            mi-NZ
+            mk-MK
+            ml-IN
+            mn-MN
+            mr-IN
+            mt-MT
+            no-NO
+            or-IN
+            pa-IN
+            pl-PL
+            ps-AF
+            ro-RO
+            rw-RW
+            si-LK
+            sk-SK
+            sl-SI
+            so-SO
+            sr-RS
+            su-ID
+            sw-BI
+            sw-KE
+            sw-RW
+            sw-TZ
+            sw-UG
+            tl-PH
+            tt-RU
+            ug-CN
+            uk-UA
+            uz-UZ
+            wo-SN
+            zu-ZA
+
+       ----ssuubbttiittlleess (structure)
+          Produces subtitle files for your input media. You can specify WebVTT
+          (_._v_t_t_) _a_n_d _S_u_b_R_i_p _(.srt) formats.
+
+          Formats -> (list)
+              Specify  the output format for your subtitle file; if you select
+              both WebVTT (vvtttt ) and SubRip (ssrrtt ) formats, two  output  files
+              are generated.
+
+              (string)
+
+          OutputStartIndex -> (integer)
+              Specify  the starting value that is assigned to the first subti-
+              tle segment.
+
+              The default start index for Amazon Transcribe is 00 , which  dif-
+              fers  from the more widely used standard of 11 . If you're uncer-
+              tain which value to use, we recommend choosing 11 , as  this  may
+              improve compatibility with other services.
+
+       Shorthand Syntax:
+
+          Formats=string,string,OutputStartIndex=integer
+
+       JSON Syntax:
+
+          {
+            "Formats": ["vtt"|"srt", ...],
+            "OutputStartIndex": integer
+          }
+
+       ----ttaaggss (list)
+          Adds  one or more custom tags, each in the form of a key:value pair,
+          to a new transcription job at the time you start this new job.
+
+          To learn more about using tags  with  Amazon  Transcribe,  refer  to
+          _T_a_g_g_i_n_g _r_e_s_o_u_r_c_e_s .
+
+          (structure)
+              Adds metadata, in the form of a key:value pair, to the specified
+              resource.
+
+              For example, you could add the tag  DDeeppaarrttmmeenntt::SSaalleess  to  a  re-
+              source to indicate that it pertains to your organization's sales
+              department. You can also use tags for tag-based access control.
+
+              To learn more about tagging, see _T_a_g_g_i_n_g _r_e_s_o_u_r_c_e_s .
+
+              Key -> (string)
+                 The first part of a key:value pair that forms a  tag  associ-
+                 ated  with  a given resource. For example, in the tag DDeeppaarrtt--
+                 mmeenntt::SSaalleess , the key is 'Department'.
+
+              Value -> (string)
+                 The second part of a key:value pair that forms a tag  associ-
+                 ated  with  a given resource. For example, in the tag DDeeppaarrtt--
+                 mmeenntt::SSaalleess , the value is 'Sales'.
+
+                 Note that you can set the value of a tag to an empty  string,
+                 but  you  can't  set the value of a tag to null. Omitting the
+                 tag value is the same as using an empty string.
+
+       Shorthand Syntax:
+
+          Key=string,Value=string ...
+
+       JSON Syntax:
+
+          [
+            {
+              "Key": "string",
+              "Value": "string"
+            }
+            ...
+          ]
+
+       ----llaanngguuaaggee--iidd--sseettttiinnggss (map)
+          If using automatic language identification in your request  and  you
+          want  to  apply  a  custom language model, a custom vocabulary, or a
+          custom vocabulary filter, include LLaanngguuaaggeeIIddSSeettttiinnggss with the  rele-
+          vant sub-parameters (VVooccaabbuullaarryyNNaammee , LLaanngguuaaggeeMMooddeellNNaammee , and VVooccaabb--
+          uullaarryyFFiilltteerrNNaammee ). Note that multi-language identification  (IIddeennttii--
+          ffyyMMuullttiipplleeLLaanngguuaaggeess ) doesn't support custom language models.
+              LLaanngguuaaggeeIIddSSeettttiinnggss  supports  two  to  five language codes. Each
+              language code you include can have an associated custom language
+              model, custom vocabulary, and custom vocabulary filter. The lan-
+              guage codes that you specify must match the languages of the as-
+              sociated custom language models, custom vocabularies, and custom
+              vocabulary filters.
+
+          It's recommended that you include LLaanngguuaaggeeOOppttiioonnss  when  using  LLaann--
+          gguuaaggeeIIddSSeettttiinnggss to ensure that the correct language dialect is iden-
+          tified. For example, if you specify a custom vocabulary that  is  in
+          eenn--UUSS  but  Amazon Transcribe determines that the language spoken in
+          your media is eenn--AAUU , your custom vocabulary _i_s _n_o_t applied to  your
+          transcription.  If  you include LLaanngguuaaggeeOOppttiioonnss and include eenn--UUSS as
+          the only English language dialect, your custom vocabulary _i_s applied
+          to your transcription.
+
+          If you want to include a custom language model with your request but
+          ddoo nnoott want to use automatic language  identification,  use  instead
+          the  parameter with the LLaanngguuaaggeeMMooddeellNNaammee sub-parameter. If you want
+          to include a custom vocabulary or a  custom  vocabulary  filter  (or
+          both)  with  your  request but ddoo nnoott want to use automatic language
+          identification, use instead the parameter with the VVooccaabbuullaarryyNNaammee or
+          VVooccaabbuullaarryyFFiilltteerrNNaammee (or both) sub-parameter.
+
+          key -> (string)
+
+          value -> (structure)
+              If  using  automatic language identification in your request and
+              you want to apply a custom language model, a custom  vocabulary,
+              or  a  custom vocabulary filter, include LLaanngguuaaggeeIIddSSeettttiinnggss with
+              the relevant sub-parameters (VVooccaabbuullaarryyNNaammee ,  LLaanngguuaaggeeMMooddeellNNaammee
+              , and VVooccaabbuullaarryyFFiilltteerrNNaammee ). Note that multi-language identifi-
+              cation (IIddeennttiiffyyMMuullttiipplleeLLaanngguuaaggeess ) doesn't support custom  lan-
+              guage models.
+                 LLaanngguuaaggeeIIddSSeettttiinnggss  supports two to five language codes. Each
+                 language code you include can have an associated custom  lan-
+                 guage model, custom vocabulary, and custom vocabulary filter.
+                 The language codes that you specify must match the  languages
+                 of  the  associated custom language models, custom vocabular-
+                 ies, and custom vocabulary filters.
+
+              It's recommended that you  include  LLaanngguuaaggeeOOppttiioonnss  when  using
+              LLaanngguuaaggeeIIddSSeettttiinnggss  to  ensure that the correct language dialect
+              is identified. For example, if you specify a  custom  vocabulary
+              that  is in eenn--UUSS but Amazon Transcribe determines that the lan-
+              guage spoken in your media is eenn--AAUU , your custom vocabulary  _i_s
+              _n_o_t  applied  to  your transcription. If you include LLaanngguuaaggeeOOpp--
+              ttiioonnss and include eenn--UUSS as the only  English  language  dialect,
+              your custom vocabulary _i_s applied to your transcription.
+
+              If you want to include a custom language model with your request
+              but ddoo nnoott want to use automatic  language  identification,  use
+              instead  the parameter with the LLaanngguuaaggeeMMooddeellNNaammee sub-parameter.
+              If you want to include a custom vocabulary or a  custom  vocabu-
+              lary  filter  (or both) with your request but ddoo nnoott want to use
+              automatic language identification,  use  instead  the  parameter
+              with   the  VVooccaabbuullaarryyNNaammee  or  VVooccaabbuullaarryyFFiilltteerrNNaammee  (or  both)
+              sub-parameter.
+
+              VocabularyName -> (string)
+                 The name of the custom vocabulary you want to use  when  pro-
+                 cessing  your  transcription job. Custom vocabulary names are
+                 case sensitive.
+
+                 The language of the specified custom  vocabulary  must  match
+                 the  language code that you specify in your transcription re-
+                 quest. If the languages do not match, the  custom  vocabulary
+                 isn't  applied.  There  are  no errors or warnings associated
+                 with a language mismatch.
+
+              VocabularyFilterName -> (string)
+                 The name of the custom vocabulary filter you want to use when
+                 processing  your  transcription job. Custom vocabulary filter
+                 names are case sensitive.
+
+                 The language of the specified custom vocabulary  filter  must
+                 match  the  language code that you specify in your transcrip-
+                 tion request. If the languages do not match, the  custom  vo-
+                 cabulary  filter  isn't applied. There are no errors or warn-
+                 ings associated with a language mismatch.
+
+                 Note that if you include  VVooccaabbuullaarryyFFiilltteerrNNaammee  in  your  re-
+                 quest, you must also include VVooccaabbuullaarryyFFiilltteerrMMeetthhoodd .
+
+              LanguageModelName -> (string)
+                 The  name  of  the custom language model you want to use when
+                 processing your transcription job. Note that custom  language
+                 model names are case sensitive.
+
+                 The  language  of  the  specified  custom language model must
+                 match the language code that you specify in  your  transcrip-
+                 tion  request. If the languages do not match, the custom lan-
+                 guage model isn't applied. There are no  errors  or  warnings
+                 associated with a language mismatch.
+
+       Shorthand Syntax:
+
+            KeyName1=VocabularyName=string,VocabularyFilterName=string,LanguageModelName=string,KeyName2=VocabularyName=string,VocabularyFilterName=string,LanguageModelName=string
+
+          Where valid key names are:
+            af-ZA
+            ar-AE
+            ar-SA
+            da-DK
+            de-CH
+            de-DE
+            en-AB
+            en-AU
+            en-GB
+            en-IE
+            en-IN
+            en-US
+            en-WL
+            es-ES
+            es-US
+            fa-IR
+            fr-CA
+            fr-FR
+            he-IL
+            hi-IN
+            id-ID
+            it-IT
+            ja-JP
+            ko-KR
+            ms-MY
+            nl-NL
+            pt-BR
+            pt-PT
+            ru-RU
+            ta-IN
+            te-IN
+            tr-TR
+            zh-CN
+            zh-TW
+            th-TH
+            en-ZA
+            en-NZ
+            vi-VN
+            sv-SE
+            ab-GE
+            ast-ES
+            az-AZ
+            ba-RU
+            be-BY
+            bg-BG
+            bn-IN
+            bs-BA
+            ca-ES
+            ckb-IQ
+            ckb-IR
+            cs-CZ
+            cy-WL
+            el-GR
+            et-ET
+            eu-ES
+            fi-FI
+            gl-ES
+            gu-IN
+            ha-NG
+            hr-HR
+            hu-HU
+            hy-AM
+            is-IS
+            ka-GE
+            kab-DZ
+            kk-KZ
+            kn-IN
+            ky-KG
+            lg-IN
+            lt-LT
+            lv-LV
+            mhr-RU
+            mi-NZ
+            mk-MK
+            ml-IN
+            mn-MN
+            mr-IN
+            mt-MT
+            no-NO
+            or-IN
+            pa-IN
+            pl-PL
+            ps-AF
+            ro-RO
+            rw-RW
+            si-LK
+            sk-SK
+            sl-SI
+            so-SO
+            sr-RS
+            su-ID
+            sw-BI
+            sw-KE
+            sw-RW
+            sw-TZ
+            sw-UG
+            tl-PH
+            tt-RU
+            ug-CN
+            uk-UA
+            uz-UZ
+            wo-SN
+            zu-ZA
+
+       JSON Syntax:
+
+          {"af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"|"ab-GE"|"ast-ES"|"az-AZ"|"ba-RU"|"be-BY"|"bg-BG"|"bn-IN"|"bs-BA"|"ca-ES"|"ckb-IQ"|"ckb-IR"|"cs-CZ"|"cy-WL"|"el-GR"|"et-ET"|"eu-ES"|"fi-FI"|"gl-ES"|"gu-IN"|"ha-NG"|"hr-HR"|"hu-HU"|"hy-AM"|"is-IS"|"ka-GE"|"kab-DZ"|"kk-KZ"|"kn-IN"|"ky-KG"|"lg-IN"|"lt-LT"|"lv-LV"|"mhr-RU"|"mi-NZ"|"mk-MK"|"ml-IN"|"mn-MN"|"mr-IN"|"mt-MT"|"no-NO"|"or-IN"|"pa-IN"|"pl-PL"|"ps-AF"|"ro-RO"|"rw-RW"|"si-LK"|"sk-SK"|"sl-SI"|"so-SO"|"sr-RS"|"su-ID"|"sw-BI"|"sw-KE"|"sw-RW"|"sw-TZ"|"sw-UG"|"tl-PH"|"tt-RU"|"ug-CN"|"uk-UA"|"uz-UZ"|"wo-SN"|"zu-ZA": {
+                "VocabularyName": "string",
+                "VocabularyFilterName": "string",
+                "LanguageModelName": "string"
+              }
+            ...}
+
+       ----ttooxxiicciittyy--ddeetteeccttiioonn (list)
+          Enables  toxic  speech  detection in your transcript. If you include
+          TTooxxiicciittyyDDeetteeccttiioonn in your request, you must also  include  TTooxxiicciittyy--
+          CCaatteeggoorriieess .
+
+          For  information  on the types of toxic speech Amazon Transcribe can
+          detect, see _D_e_t_e_c_t_i_n_g _t_o_x_i_c _s_p_e_e_c_h .
+
+          (structure)
+              Contains TTooxxiicciittyyCCaatteeggoorriieess , which is a required  parameter  if
+              you  want  to  enable toxicity detection (TTooxxiicciittyyDDeetteeccttiioonn ) in
+              your transcription request.
+
+              ToxicityCategories -> (list)
+                 If you include TTooxxiicciittyyDDeetteeccttiioonn in  your  transcription  re-
+                 quest,  you  must  also include TTooxxiicciittyyCCaatteeggoorriieess . The only
+                 accepted value for this parameter is AALLLL .
+
+                 (string)
+
+       Shorthand Syntax:
+
+          ToxicityCategories=string,string ...
+
+       JSON Syntax:
+
+          [
+            {
+              "ToxicityCategories": ["ALL", ...]
+            }
+            ...
+          ]
+
+       ----ccllii--iinnppuutt--jjssoonn | ----ccllii--iinnppuutt--yyaammll (string) Reads arguments  from  the
+       JSON  string  provided.  The JSON string follows the format provided by
+       ----ggeenneerraattee--ccllii--sskkeelleettoonn. If other arguments are provided on the command
+       line,  those  values  will override the JSON-provided values. It is not
+       possible to pass arbitrary binary values using a JSON-provided value as
+       the  string  will  be  taken literally. This may not be specified along
+       with ----ccllii--iinnppuutt--yyaammll.
+
+       ----ggeenneerraattee--ccllii--sskkeelleettoonn (string) Prints a  JSON  skeleton  to  standard
+       output without sending an API request. If provided with no value or the
+       value iinnppuutt, prints a sample input JSON that can be used as an argument
+       for ----ccllii--iinnppuutt--jjssoonn. Similarly, if provided yyaammll--iinnppuutt it will print a
+       sample input YAML that can be used with ----ccllii--iinnppuutt--yyaammll.  If  provided
+       with  the  value  oouuttppuutt, it validates the command inputs and returns a
+       sample output JSON for that command. The generated JSON skeleton is not
+       stable  between versions of the AWS CLI and there are no backwards com-
+       patibility guarantees in the JSON skeleton generated.
+
+GGLLOOBBAALL OOPPTTIIOONNSS
+       ----ddeebbuugg (boolean)
+
+       Turn on debug logging.
+
+       ----eennddppooiinntt--uurrll (string)
+
+       Override command's default URL with the given URL.
+
+       ----nnoo--vveerriiffyy--ssssll (boolean)
+
+       By default, the AWS CLI uses SSL when communicating with AWS  services.
+       For each SSL connection, the AWS CLI will verify SSL certificates. This
+       option overrides the default behavior of verifying SSL certificates.
+
+       ----nnoo--ppaaggiinnaattee (boolean)
+
+       Disable automatic pagination. If automatic pagination is disabled,  the
+       AWS CLI will only make one call, for the first page of results.
+
+       ----oouuttppuutt (string)
+
+       The formatting style for command output.
+
+       +o json
+
+       +o text
+
+       +o table
+
+       +o yaml
+
+       +o yaml-stream
+
+       ----qquueerryy (string)
+
+       A JMESPath query to use in filtering the response data.
+
+       ----pprrooffiillee (string)
+
+       Use a specific profile from your credential file.
+
+       ----rreeggiioonn (string)
+
+       The region to use. Overrides config/env settings.
+
+       ----vveerrssiioonn (string)
+
+       Display the version of this tool.
+
+       ----ccoolloorr (string)
+
+       Turn on/off color output.
+
+       +o on
+
+       +o off
+
+       +o auto
+
+       ----nnoo--ssiiggnn--rreeqquueesstt (boolean)
+
+       Do  not  sign requests. Credentials will not be loaded if this argument
+       is provided.
+
+       ----ccaa--bbuunnddllee (string)
+
+       The CA certificate bundle to use when verifying SSL certificates. Over-
+       rides config/env settings.
+
+       ----ccllii--rreeaadd--ttiimmeeoouutt (int)
+
+       The  maximum socket read time in seconds. If the value is set to 0, the
+       socket read will be blocking and not timeout. The default value  is  60
+       seconds.
+
+       ----ccllii--ccoonnnneecctt--ttiimmeeoouutt (int)
+
+       The  maximum  socket connect time in seconds. If the value is set to 0,
+       the socket connect will be blocking and not timeout. The default  value
+       is 60 seconds.
+
+       ----ccllii--bbiinnaarryy--ffoorrmmaatt (string)
+
+       The formatting style to be used for binary blobs. The default format is
+       base64. The base64 format expects binary blobs  to  be  provided  as  a
+       base64  encoded string. The raw-in-base64-out format preserves compati-
+       bility with AWS CLI V1 behavior and binary values must be passed liter-
+       ally.  When  providing  contents  from a file that map to a binary blob
+       ffiilleebb:://// will always be treated as binary and use the file contents di-
+       rectly  regardless of the ccllii--bbiinnaarryy--ffoorrmmaatt setting. When using ffiillee::////
+       the file contents will need to properly formatted  for  the  configured
+       ccllii--bbiinnaarryy--ffoorrmmaatt.
+
+       +o base64
+
+       +o raw-in-base64-out
+
+       ----nnoo--ccllii--ppaaggeerr (boolean)
+
+       Disable cli pager for output.
+
+       ----ccllii--aauuttoo--pprroommpptt (boolean)
+
+       Automatically prompt for CLI input parameters.
+
+       ----nnoo--ccllii--aauuttoo--pprroommpptt (boolean)
+
+       Disable automatically prompt for CLI input parameters.
+
+EEXXAAMMPPLLEESS
+       NNOOTTEE::
+          To  use  the following examples, you must have the AWS CLI installed
+          and configured. See the _G_e_t_t_i_n_g _s_t_a_r_t_e_d _g_u_i_d_e in the  _A_W_S  _C_L_I  _U_s_e_r
+          _G_u_i_d_e for more information.
+
+          Unless  otherwise  stated,  all  examples  have  unix-like quotation
+          rules. These examples will need to be  adapted  to  your  terminal's
+          quoting rules. See _U_s_i_n_g _q_u_o_t_a_t_i_o_n _m_a_r_k_s _w_i_t_h _s_t_r_i_n_g_s in the _A_W_S _C_L_I
+          _U_s_e_r _G_u_i_d_e .
+
+       EExxaammppllee 11:: TToo ttrraannssccrriibbee aann aauuddiioo ffiillee
+
+       The following ssttaarrtt--ttrraannssccrriippttiioonn--jjoobb example  transcribes  your  audio
+       file.
+
+          aws transcribe start-transcription-job \
+              --cli-input-json file://myfile.json
+
+       Contents of mmyyffiillee..jjssoonn:
+
+          {
+              "TranscriptionJobName": "cli-simple-transcription-job",
+              "LanguageCode": "the-language-of-your-transcription-job",
+              "Media": {
+                  "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+              }
+          }
+
+       For  more information, see _G_e_t_t_i_n_g _S_t_a_r_t_e_d _(_A_W_S _C_o_m_m_a_n_d _L_i_n_e _I_n_t_e_r_f_a_c_e_)
+       in the _A_m_a_z_o_n _T_r_a_n_s_c_r_i_b_e _D_e_v_e_l_o_p_e_r _G_u_i_d_e.
+
+       EExxaammppllee 22:: TToo ttrraannssccrriibbee aa mmuullttii--cchhaannnneell aauuddiioo ffiillee
+
+       The  following   ssttaarrtt--ttrraannssccrriippttiioonn--jjoobb   example   transcribes   your
+       multi-channel audio file.
+
+          aws transcribe start-transcription-job \
+              --cli-input-json file://mysecondfile.json
+
+       Contents of mmyysseeccoonnddffiillee..jjssoonn:
+
+          {
+              "TranscriptionJobName": "cli-channelid-job",
+              "LanguageCode": "the-language-of-your-transcription-job",
+              "Media": {
+                  "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+              },
+              "Settings":{
+                  "ChannelIdentification":true
+              }
+          }
+
+       Output:
+
+          {
+              "TranscriptionJob": {
+                  "TranscriptionJobName": "cli-channelid-job",
+                  "TranscriptionJobStatus": "IN_PROGRESS",
+                  "LanguageCode": "the-language-of-your-transcription-job",
+                  "Media": {
+                      "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+                  },
+                  "StartTime": "2020-09-17T16:07:56.817000+00:00",
+                  "CreationTime": "2020-09-17T16:07:56.784000+00:00",
+                  "Settings": {
+                      "ChannelIdentification": true
+                  }
+              }
+          }
+
+       For  more information, see _T_r_a_n_s_c_r_i_b_i_n_g _M_u_l_t_i_-_C_h_a_n_n_e_l _A_u_d_i_o in the _A_m_a_-
+       _z_o_n _T_r_a_n_s_c_r_i_b_e _D_e_v_e_l_o_p_e_r _G_u_i_d_e.
+
+       EExxaammppllee 33:: TToo ttrraannssccrriibbee aann  aauuddiioo  ffiillee  aanndd  iiddeennttiiffyy  tthhee  ddiiffffeerreenntt
+       ssppeeaakkeerrss
+
+       The  following  ssttaarrtt--ttrraannssccrriippttiioonn--jjoobb  example transcribes your audio
+       file and identifies the speakers in the transcription output.
+
+          aws transcribe start-transcription-job \
+              --cli-input-json file://mythirdfile.json
+
+       Contents of mmyytthhiirrddffiillee..jjssoonn:
+
+          {
+              "TranscriptionJobName": "cli-speakerid-job",
+              "LanguageCode": "the-language-of-your-transcription-job",
+              "Media": {
+                  "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+              },
+              "Settings":{
+              "ShowSpeakerLabels": true,
+              "MaxSpeakerLabels": 2
+              }
+          }
+
+       Output:
+
+          {
+              "TranscriptionJob": {
+                  "TranscriptionJobName": "cli-speakerid-job",
+                  "TranscriptionJobStatus": "IN_PROGRESS",
+                  "LanguageCode": "the-language-of-your-transcription-job",
+                  "Media": {
+                      "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+                  },
+                  "StartTime": "2020-09-17T16:22:59.696000+00:00",
+                  "CreationTime": "2020-09-17T16:22:59.676000+00:00",
+                  "Settings": {
+                      "ShowSpeakerLabels": true,
+                      "MaxSpeakerLabels": 2
+                  }
+              }
+          }
+
+       For more information, see _I_d_e_n_t_i_f_y_i_n_g _S_p_e_a_k_e_r_s in the _A_m_a_z_o_n _T_r_a_n_s_c_r_i_b_e
+       _D_e_v_e_l_o_p_e_r _G_u_i_d_e.
+
+       EExxaammppllee  44::  TToo ttrraannssccrriibbee aann aauuddiioo ffiillee aanndd mmaasskk aannyy uunnwwaanntteedd wwoorrddss iinn
+       tthhee ttrraannssccrriippttiioonn oouuttppuutt
+
+       The following ssttaarrtt--ttrraannssccrriippttiioonn--jjoobb example  transcribes  your  audio
+       file and uses a vocabulary filter you've previously created to mask any
+       unwanted words.
+
+          aws transcribe start-transcription-job \
+              --cli-input-json file://myfourthfile.json
+
+       Contents of mmyyffoouurrtthhffiillee..jjssoonn:
+
+          {
+              "TranscriptionJobName": "cli-filter-mask-job",
+              "LanguageCode": "the-language-of-your-transcription-job",
+              "Media": {
+                    "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+              },
+              "Settings":{
+                  "VocabularyFilterName": "your-vocabulary-filter",
+                  "VocabularyFilterMethod": "mask"
+              }
+          }
+
+       Output:
+
+          {
+              "TranscriptionJob": {
+                  "TranscriptionJobName": "cli-filter-mask-job",
+                  "TranscriptionJobStatus": "IN_PROGRESS",
+                  "LanguageCode": "the-language-of-your-transcription-job",
+                  "Media": {
+                      "MediaFileUri": "s3://Amazon-S3-Prefix/your-media-file.file-extension"
+                  },
+                  "StartTime": "2020-09-18T16:36:18.568000+00:00",
+                  "CreationTime": "2020-09-18T16:36:18.547000+00:00",
+                  "Settings": {
+                      "VocabularyFilterName": "your-vocabulary-filter",
+                      "VocabularyFilterMethod": "mask"
+                  }
+              }
+          }
+
+       For more information, see _F_i_l_t_e_r_i_n_g _T_r_a_n_s_c_r_i_p_t_i_o_n_s in the _A_m_a_z_o_n  _T_r_a_n_-
+       _s_c_r_i_b_e _D_e_v_e_l_o_p_e_r _G_u_i_d_e.
+
+       EExxaammppllee 55:: TToo ttrraannssccrriibbee aann aauuddiioo ffiillee aanndd rreemmoovvee aannyy uunnwwaanntteedd wwoorrddss iinn
+       tthhee ttrraannssccrriippttiioonn oouuttppuutt
+
+       The following ssttaarrtt--ttrraannssccrriippttiioonn--jjoobb example  transcribes  your  audio
+       file and uses a vocabulary filter you've previously created to mask any
+       unwanted words.
+
+          aws transcribe start-transcription-job \
+              --cli-input-json file://myfifthfile.json
+
+       Contents of mmyyffiifftthhffiillee..jjssoonn:
+
+          {
+              "TranscriptionJobName": "cli-filter-remove-job",
+              "LanguageCode": "the-language-of-your-transcription-job",
+              "Media": {
+                  "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+              },
+              "Settings":{
+                  "VocabularyFilterName": "your-vocabulary-filter",
+                  "VocabularyFilterMethod": "remove"
+              }
+          }
+
+       Output:
+
+          {
+              "TranscriptionJob": {
+                  "TranscriptionJobName": "cli-filter-remove-job",
+                  "TranscriptionJobStatus": "IN_PROGRESS",
+                  "LanguageCode": "the-language-of-your-transcription-job",
+                  "Media": {
+                      "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+                  },
+                  "StartTime": "2020-09-18T16:36:18.568000+00:00",
+                  "CreationTime": "2020-09-18T16:36:18.547000+00:00",
+                  "Settings": {
+                      "VocabularyFilterName": "your-vocabulary-filter",
+                      "VocabularyFilterMethod": "remove"
+                  }
+              }
+          }
+
+       For more information, see _F_i_l_t_e_r_i_n_g _T_r_a_n_s_c_r_i_p_t_i_o_n_s in the _A_m_a_z_o_n  _T_r_a_n_-
+       _s_c_r_i_b_e _D_e_v_e_l_o_p_e_r _G_u_i_d_e.
+
+       EExxaammppllee  66:: TToo ttrraannssccrriibbee aann aauuddiioo ffiillee wwiitthh iinnccrreeaasseedd aaccccuurraaccyy uussiinngg aa
+       ccuussttoomm vvooccaabbuullaarryy
+
+       The following ssttaarrtt--ttrraannssccrriippttiioonn--jjoobb example  transcribes  your  audio
+       file and uses a vocabulary filter you've previously created to mask any
+       unwanted words.
+
+          aws transcribe start-transcription-job \
+              --cli-input-json file://mysixthfile.json
+
+       Contents of mmyyssiixxtthhffiillee..jjssoonn:
+
+          {
+              "TranscriptionJobName": "cli-vocab-job",
+              "LanguageCode": "the-language-of-your-transcription-job",
+              "Media": {
+                  "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+              },
+              "Settings":{
+                  "VocabularyName": "your-vocabulary"
+              }
+          }
+
+       Output:
+
+          {
+              "TranscriptionJob": {
+                  "TranscriptionJobName": "cli-vocab-job",
+                  "TranscriptionJobStatus": "IN_PROGRESS",
+                  "LanguageCode": "the-language-of-your-transcription-job",
+                  "Media": {
+                      "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+                  },
+                  "StartTime": "2020-09-18T16:36:18.568000+00:00",
+                  "CreationTime": "2020-09-18T16:36:18.547000+00:00",
+                  "Settings": {
+                      "VocabularyName": "your-vocabulary"
+                  }
+              }
+          }
+
+       For more information, see _F_i_l_t_e_r_i_n_g _T_r_a_n_s_c_r_i_p_t_i_o_n_s in the _A_m_a_z_o_n  _T_r_a_n_-
+       _s_c_r_i_b_e _D_e_v_e_l_o_p_e_r _G_u_i_d_e.
+
+       EExxaammppllee 77:: TToo iiddeennttiiffyy tthhee llaanngguuaaggee ooff aann aauuddiioo ffiillee aanndd ttrraannssccrriibbee iitt
+
+       The  following  ssttaarrtt--ttrraannssccrriippttiioonn--jjoobb  example transcribes your audio
+       file and uses a vocabulary filter you've previously created to mask any
+       unwanted words.
+
+          aws transcribe start-transcription-job \
+              --cli-input-json file://myseventhfile.json
+
+       Contents of mmyysseevveenntthhffiillee..jjssoonn:
+
+          {
+              "TranscriptionJobName": "cli-identify-language-transcription-job",
+              "IdentifyLanguage": true,
+              "Media": {
+                  "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+              }
+          }
+
+       Output:
+
+          {
+              "TranscriptionJob": {
+                  "TranscriptionJobName": "cli-identify-language-transcription-job",
+                  "TranscriptionJobStatus": "IN_PROGRESS",
+                  "Media": {
+                      "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/Amazon-S3-prefix/your-media-file-name.file-extension"
+                  },
+                  "StartTime": "2020-09-18T22:27:23.970000+00:00",
+                  "CreationTime": "2020-09-18T22:27:23.948000+00:00",
+                  "IdentifyLanguage": true
+              }
+          }
+
+       For  more information, see _I_d_e_n_t_i_f_y_i_n_g _t_h_e _L_a_n_g_u_a_g_e in the _A_m_a_z_o_n _T_r_a_n_-
+       _s_c_r_i_b_e _D_e_v_e_l_o_p_e_r _G_u_i_d_e.
+
+       EExxaammppllee 88:: TToo ttrraannssccrriibbee aann aauuddiioo ffiillee wwiitthh ppeerrssoonnaallllyy iiddeennttiiffiiaabbllee iinn--
+       ffoorrmmaattiioonn rreeddaacctteedd
+
+       The  following  ssttaarrtt--ttrraannssccrriippttiioonn--jjoobb  example transcribes your audio
+       file and redacts any personally identifiable information in  the  tran-
+       scription output.
+
+          aws transcribe start-transcription-job \
+              --cli-input-json file://myeighthfile.json
+
+       Contents of mmyyeeiiggtthhffiillee..jjssoonn:
+
+          {
+              "TranscriptionJobName": "cli-redaction-job",
+              "LanguageCode": "language-code",
+              "Media": {
+                  "MediaFileUri": "s3://Amazon-S3-Prefix/your-media-file.file-extension"
+              },
+              "ContentRedaction": {
+                  "RedactionOutput":"redacted",
+                  "RedactionType":"PII"
+              }
+          }
+
+       Output:
+
+          {
+              "TranscriptionJob": {
+                  "TranscriptionJobName": "cli-redaction-job",
+                  "TranscriptionJobStatus": "IN_PROGRESS",
+                  "LanguageCode": "language-code",
+                  "Media": {
+                      "MediaFileUri": "s3://Amazon-S3-Prefix/your-media-file.file-extension"
+                  },
+                  "StartTime": "2020-09-25T23:49:13.195000+00:00",
+                  "CreationTime": "2020-09-25T23:49:13.176000+00:00",
+                  "ContentRedaction": {
+                      "RedactionType": "PII",
+                      "RedactionOutput": "redacted"
+                  }
+              }
+          }
+
+       For  more  information,  see  _A_u_t_o_m_a_t_i_c _C_o_n_t_e_n_t _R_e_d_a_c_t_i_o_n in the _A_m_a_z_o_n
+       _T_r_a_n_s_c_r_i_b_e _D_e_v_e_l_o_p_e_r _G_u_i_d_e.
+
+       EExxaammppllee 99:: TToo ggeenneerraattee aa ttrraannssccrriipptt wwiitthh ppeerrssoonnaallllyy iiddeennttiiffiiaabbllee iinnffoorr--
+       mmaattiioonn ((PPIIII)) rreeddaacctteedd aanndd aann uunnrreeddaacctteedd ttrraannssccrriipptt
+
+       The  following  ssttaarrtt--ttrraannssccrriippttiioonn--jjoobb example generates two transcrp-
+       tions of your audio file, one with the personally identifiable informa-
+       tion redacted, and the other without any redactions.
+
+          aws transcribe start-transcription-job \
+              --cli-input-json file://myninthfile.json
+
+       Contents of mmyynniinntthhffiillee..jjssoonn:
+
+          {
+              "TranscriptionJobName": "cli-redaction-job-with-unredacted-transcript",
+              "LanguageCode": "language-code",
+              "Media": {
+                    "MediaFileUri": "s3://Amazon-S3-Prefix/your-media-file.file-extension"
+                  },
+              "ContentRedaction": {
+                  "RedactionOutput":"redacted_and_unredacted",
+                  "RedactionType":"PII"
+              }
+          }
+
+       Output:
+
+          {
+              "TranscriptionJob": {
+                  "TranscriptionJobName": "cli-redaction-job-with-unredacted-transcript",
+                  "TranscriptionJobStatus": "IN_PROGRESS",
+                  "LanguageCode": "language-code",
+                  "Media": {
+                      "MediaFileUri": "s3://Amazon-S3-Prefix/your-media-file.file-extension"
+                  },
+                  "StartTime": "2020-09-25T23:59:47.677000+00:00",
+                  "CreationTime": "2020-09-25T23:59:47.653000+00:00",
+                  "ContentRedaction": {
+                      "RedactionType": "PII",
+                      "RedactionOutput": "redacted_and_unredacted"
+                  }
+              }
+          }
+
+       For  more  information,  see  _A_u_t_o_m_a_t_i_c _C_o_n_t_e_n_t _R_e_d_a_c_t_i_o_n in the _A_m_a_z_o_n
+       _T_r_a_n_s_c_r_i_b_e _D_e_v_e_l_o_p_e_r _G_u_i_d_e.
+
+       EExxaammppllee 1100:: TToo uussee aa ccuussttoomm llaanngguuaaggee mmooddeell yyoouu''vvee pprreevviioouussllyy ccrreeaatteedd ttoo
+       ttrraannssccrriibbee aann aauuddiioo ffiillee..
+
+       The  following  ssttaarrtt--ttrraannssccrriippttiioonn--jjoobb  example transcribes your audio
+       file with a custom language model you've previously created.
+
+          aws transcribe start-transcription-job \
+              --cli-input-json file://mytenthfile.json
+
+       Contents of mmyytteenntthhffiillee..jjssoonn:
+
+          {
+              "TranscriptionJobName": "cli-clm-2-job-1",
+              "LanguageCode": "language-code",
+              "Media": {
+                  "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/your-audio-file.file-extension"
+              },
+              "ModelSettings": {
+                  "LanguageModelName":"cli-clm-2"
+              }
+          }
+
+       Output:
+
+          {
+              "TranscriptionJob": {
+                  "TranscriptionJobName": "cli-clm-2-job-1",
+                  "TranscriptionJobStatus": "IN_PROGRESS",
+                  "LanguageCode": "language-code",
+                  "Media": {
+                      "MediaFileUri": "s3://DOC-EXAMPLE-BUCKET/your-audio-file.file-extension"
+                  },
+                  "StartTime": "2020-09-28T17:56:01.835000+00:00",
+                  "CreationTime": "2020-09-28T17:56:01.801000+00:00",
+                  "ModelSettings": {
+                      "LanguageModelName": "cli-clm-2"
+                  }
+              }
+          }
+
+       For more information, see _I_m_p_r_o_v_i_n_g _D_o_m_a_i_n_-_S_p_e_c_i_f_i_c _T_r_a_n_s_c_r_i_p_t_i_o_n _A_c_c_u_-
+       _r_a_c_y  _w_i_t_h  _C_u_s_t_o_m  _L_a_n_g_u_a_g_e  _M_o_d_e_l_s in the _A_m_a_z_o_n _T_r_a_n_s_c_r_i_b_e _D_e_v_e_l_o_p_e_r
+       _G_u_i_d_e.
+
+OOUUTTPPUUTT
+       TranscriptionJob -> (structure)
+          Provides detailed information about the current  transcription  job,
+          including job status and, if applicable, failure reason.
+
+          TranscriptionJobName -> (string)
+              The  name of the transcription job. Job names are case sensitive
+              and must be unique within an Amazon Web Services account.
+
+          TranscriptionJobStatus -> (string)
+              Provides the status of the specified transcription job.
+
+              If the status is CCOOMMPPLLEETTEEDD , the job is  finished  and  you  can
+              find  the results at the location specified in TTrraannssccrriippttFFiilleeUUrrii
+              (or RReeddaacctteeddTTrraannssccrriippttFFiilleeUUrrii  ,  if  you  requested  transcript
+              redaction). If the status is FFAAIILLEEDD , FFaaiilluurreeRReeaassoonn provides de-
+              tails on why your transcription job failed.
+
+          LanguageCode -> (string)
+              The language code used to create your  transcription  job.  This
+              parameter  is  used  with  single-language  identification.  For
+              multi-language identification requests, refer to the plural ver-
+              sion of this parameter, LLaanngguuaaggeeCCooddeess .
+
+          MediaSampleRateHertz -> (integer)
+              The  sample rate, in hertz, of the audio track in your input me-
+              dia file.
+
+          MediaFormat -> (string)
+              The format of the input media file.
+
+          Media -> (structure)
+              Provides the Amazon S3 location of the media file  you  used  in
+              your request.
+
+              MediaFileUri -> (string)
+                 The  Amazon  S3  location of the media file you want to tran-
+                 scribe. For example:
+
+                 +o ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//mmyy--mmeeddiiaa--ffiillee..ffllaacc
+
+                 +o ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//mmeeddiiaa--ffiilleess//mmyy--mmeeddiiaa--ffiillee..ffllaacc
+
+                 Note that the Amazon S3 bucket that contains your input media
+                 must  be located in the same Amazon Web Services Region where
+                 you're making your transcription request.
+
+              RedactedMediaFileUri -> (string)
+                 The Amazon S3 location of the media file you want to  redact.
+                 For example:
+
+                 +o ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//mmyy--mmeeddiiaa--ffiillee..ffllaacc
+
+                 +o ss33::////DDOOCC--EEXXAAMMPPLLEE--BBUUCCKKEETT//mmeeddiiaa--ffiilleess//mmyy--mmeeddiiaa--ffiillee..ffllaacc
+
+                 Note that the Amazon S3 bucket that contains your input media
+                 must be located in the same Amazon Web Services Region  where
+                 you're making your transcription request.
+
+                 WWAARRNNIINNGG::
+                     RReeddaacctteeddMMeeddiiaaFFiilleeUUrrii  produces  a  redacted audio file in
+                     addition to a redacted transcript. It is  only  supported
+                     for Call Analytics (SSttaarrttCCaallllAAnnaallyyttiiccssJJoobb ) transcription
+                     requests.
+
+          Transcript -> (structure)
+              Provides you with the Amazon S3 URI you can use to  access  your
+              transcript.
+
+              TranscriptFileUri -> (string)
+                 The  Amazon  S3 location of your transcript. You can use this
+                 URI to access or download your transcript.
+
+                 If you included OOuuttppuuttBBuucckkeettNNaammee in  your  transcription  job
+                 request, this is the URI of that bucket. If you also included
+                 OOuuttppuuttKKeeyy in your request, your output is located in the path
+                 you specified in your request.
+
+                 If  you didn't include OOuuttppuuttBBuucckkeettNNaammee in your transcription
+                 job request, your transcript is stored in  a  service-managed
+                 bucket,  and  TTrraannssccrriippttFFiilleeUUrrii provides you with a temporary
+                 URI you can use for secure access to your transcript.
+
+                 NNOOTTEE::
+                     Temporary URIs for service-managed Amazon S3 buckets  are
+                     only  valid for 15 minutes. If you get an AAcccceessDDeenniieedd er-
+                     ror, you can get a new temporary URI by  running  a  GGeett--
+                     TTrraannssccrriippttiioonnJJoobb or LLiissttTTrraannssccrriippttiioonnJJoobb request.
+
+              RedactedTranscriptFileUri -> (string)
+                 The  Amazon  S3 location of your redacted transcript. You can
+                 use this URI to access or download your transcript.
+
+                 If you included OOuuttppuuttBBuucckkeettNNaammee in  your  transcription  job
+                 request, this is the URI of that bucket. If you also included
+                 OOuuttppuuttKKeeyy in your request, your output is located in the path
+                 you specified in your request.
+
+                 If  you didn't include OOuuttppuuttBBuucckkeettNNaammee in your transcription
+                 job request, your transcript is stored in  a  service-managed
+                 bucket,  and  RReeddaacctteeddTTrraannssccrriippttFFiilleeUUrrii  provides  you with a
+                 temporary URI you can use for secure  access  to  your  tran-
+                 script.
+
+                 NNOOTTEE::
+                     Temporary  URIs for service-managed Amazon S3 buckets are
+                     only valid for 15 minutes. If you get an AAcccceessDDeenniieedd  er-
+                     ror,  you  can  get a new temporary URI by running a GGeett--
+                     TTrraannssccrriippttiioonnJJoobb or LLiissttTTrraannssccrriippttiioonnJJoobb request.
+
+          StartTime -> (timestamp)
+              The date and time the specified transcription job began process-
+              ing.
+
+              Timestamps  are in the format YYYYYYYY--MMMM--DDDD''TT''HHHH::MMMM::SSSS..SSSSSSSSSSSS--UUTTCC .
+              For example, 22002222--0055--0044TT1122::3322::5588..778899000000--0077::0000 represents a tran-
+              scription  job  that started processing at 12:32 PM UTC-7 on May
+              4, 2022.
+
+          CreationTime -> (timestamp)
+              The date and time the specified transcription  job  request  was
+              made.
+
+              Timestamps  are in the format YYYYYYYY--MMMM--DDDD''TT''HHHH::MMMM::SSSS..SSSSSSSSSSSS--UUTTCC .
+              For example, 22002222--0055--0044TT1122::3322::5588..776611000000--0077::0000 represents a tran-
+              scription  job  that started processing at 12:32 PM UTC-7 on May
+              4, 2022.
+
+          CompletionTime -> (timestamp)
+              The date and time the specified transcription job finished  pro-
+              cessing.
+
+              Timestamps  are in the format YYYYYYYY--MMMM--DDDD''TT''HHHH::MMMM::SSSS..SSSSSSSSSSSS--UUTTCC .
+              For example, 22002222--0055--0044TT1122::3333::1133..992222000000--0077::0000 represents a tran-
+              scription  job  that started processing at 12:33 PM UTC-7 on May
+              4, 2022.
+
+          FailureReason -> (string)
+              If TTrraannssccrriippttiioonnJJoobbSSttaattuuss is FFAAIILLEEDD , FFaaiilluurreeRReeaassoonn contains in-
+              formation about why the transcription job request failed.
+
+              The FFaaiilluurreeRReeaassoonn field contains one of the following values:
+
+              +o UUnnssuuppppoorrtteedd mmeeddiiaa ffoorrmmaatt . The media format specified in MMeeddii--
+                aaFFoorrmmaatt isn't valid. Refer to refer to the MMeeddiiaaFFoorrmmaatt parame-
+                ter for a list of supported formats.
+
+              +o TThhee  mmeeddiiaa  ffoorrmmaatt  pprroovviiddeedd ddooeess nnoott mmaattcchh tthhee ddeetteecctteedd mmeeddiiaa
+                ffoorrmmaatt . The media format  specified  in  MMeeddiiaaFFoorrmmaatt  doesn't
+                match  the format of the input file. Check the media format of
+                your media file and correct the specified value.
+
+              +o IInnvvaalliidd ssaammppllee rraattee ffoorr aauuddiioo ffiillee . The sample rate specified
+                in  MMeeddiiaaSSaammpplleeRRaatteeHHeerrttzz  isn't valid. The sample rate must be
+                between 8,000 and 48,000 hertz.
+
+              +o TThhee ssaammppllee rraattee pprroovviiddeedd ddooeess nnoott mmaattcchh  tthhee  ddeetteecctteedd  ssaammppllee
+                rraattee  .  The  sample  rate  specified  in MMeeddiiaaSSaammpplleeRRaatteeHHeerrttzz
+                doesn't match the sample rate detected  in  your  input  media
+                file. Check the sample rate of your media file and correct the
+                specified value.
+
+              +o IInnvvaalliidd ffiillee ssiizzee:: ffiillee ssiizzee ttoooo llaarrggee . The size of your  me-
+                dia  file  is  larger than what Amazon Transcribe can process.
+                For more information, refer to _S_e_r_v_i_c_e _q_u_o_t_a_s .
+
+              +o IInnvvaalliidd nnuummbbeerr ooff cchhaannnneellss:: nnuummbbeerr ooff  cchhaannnneellss  ttoooo  llaarrggee  .
+                Your  audio  contains  more channels than Amazon Transcribe is
+                able to process. For more information, refer to _S_e_r_v_i_c_e _q_u_o_t_a_s
+                .
+
+          Settings -> (structure)
+              Provides  information  on  any additional settings that were in-
+              cluded in your  request.  Additional  settings  include  channel
+              identification,  alternative  transcriptions, speaker partition-
+              ing, custom vocabularies, and custom vocabulary filters.
+
+              VocabularyName -> (string)
+                 The name of the custom vocabulary you want  to  use  in  your
+                 transcription  job request. This name is case sensitive, can-
+                 not contain spaces, and must be unique within an  Amazon  Web
+                 Services account.
+
+              ShowSpeakerLabels -> (boolean)
+                 Enables speaker partitioning (diarization) in your transcrip-
+                 tion output. Speaker partitioning labels the speech from  in-
+                 dividual speakers in your media file.
+
+                 If  you  enable  SShhoowwSSppeeaakkeerrLLaabbeellss  in your request, you must
+                 also include MMaaxxSSppeeaakkeerrLLaabbeellss .
+
+                 For more information, see _P_a_r_t_i_t_i_o_n_i_n_g _s_p_e_a_k_e_r_s _(_d_i_a_r_i_z_a_t_i_o_n_)
+                 .
+
+              MaxSpeakerLabels -> (integer)
+                 Specify  the maximum number of speakers you want to partition
+                 in your media.
+
+                 Note that if your media contains more speakers than the spec-
+                 ified  number,  multiple  speakers  are  treated  as a single
+                 speaker.
+
+                 If you specify the MMaaxxSSppeeaakkeerrLLaabbeellss field, you must  set  the
+                 SShhoowwSSppeeaakkeerrLLaabbeellss field to true.
+
+              ChannelIdentification -> (boolean)
+                 Enables channel identification in multi-channel audio.
+
+                 Channel  identification transcribes the audio on each channel
+                 independently, then appends the output for each channel  into
+                 one transcript.
+
+                 For more information, see _T_r_a_n_s_c_r_i_b_i_n_g _m_u_l_t_i_-_c_h_a_n_n_e_l _a_u_d_i_o .
+
+              ShowAlternatives -> (boolean)
+                 To  include alternative transcriptions within your transcrip-
+                 tion output, include SShhoowwAAlltteerrnnaattiivveess in  your  transcription
+                 request.
+
+                 If  you  have  multi-channel  audio and do not enable channel
+                 identification, your audio is  transcribed  in  a  continuous
+                 manner  and  your  transcript does not separate the speech by
+                 channel.
+
+                 If you include SShhoowwAAlltteerrnnaattiivveess , you must also include  MMaaxx--
+                 AAlltteerrnnaattiivveess  ,  which  is  the maximum number of alternative
+                 transcriptions you want Amazon Transcribe to generate.
+
+                 For more information, see _A_l_t_e_r_n_a_t_i_v_e _t_r_a_n_s_c_r_i_p_t_i_o_n_s .
+
+              MaxAlternatives -> (integer)
+                 Indicate the maximum number of alternative transcriptions you
+                 want Amazon Transcribe to include in your transcript.
+
+                 If you select a number greater than the number of alternative
+                 transcriptions generated by Amazon Transcribe, only  the  ac-
+                 tual number of alternative transcriptions are included.
+
+                 If you include MMaaxxAAlltteerrnnaattiivveess in your request, you must also
+                 include SShhoowwAAlltteerrnnaattiivveess with a value of ttrruuee .
+
+                 For more information, see _A_l_t_e_r_n_a_t_i_v_e _t_r_a_n_s_c_r_i_p_t_i_o_n_s .
+
+              VocabularyFilterName -> (string)
+                 The name of the custom vocabulary filter you want to  use  in
+                 your  transcription job request. This name is case sensitive,
+                 cannot contain spaces, and must be unique  within  an  Amazon
+                 Web Services account.
+
+                 Note  that  if  you  include VVooccaabbuullaarryyFFiilltteerrNNaammee in your re-
+                 quest, you must also include VVooccaabbuullaarryyFFiilltteerrMMeetthhoodd .
+
+              VocabularyFilterMethod -> (string)
+                 Specify how you want your custom vocabulary filter applied to
+                 your transcript.
+
+                 To replace words with ****** , choose mmaasskk .
+
+                 To delete words, choose rreemmoovvee .
+
+                 To flag words without changing them, choose ttaagg .
+
+          ModelSettings -> (structure)
+              Provides  information  on the custom language model you included
+              in your request.
+
+              LanguageModelName -> (string)
+                 The name of the custom language model you want  to  use  when
+                 processing  your transcription job. Note that custom language
+                 model names are case sensitive.
+
+                 The language of the  specified  custom  language  model  must
+                 match  the  language code that you specify in your transcrip-
+                 tion request. If the languages do not match, the custom  lan-
+                 guage  model  isn't  applied. There are no errors or warnings
+                 associated with a language mismatch.
+
+          JobExecutionSettings -> (structure)
+              Provides information about how your transcription job  was  pro-
+              cessed. This parameter shows if your request was queued and what
+              data access role was used.
+
+              AllowDeferredExecution -> (boolean)
+                 Makes it possible to enable job queuing when your  concurrent
+                 request limit is exceeded. When AAlllloowwDDeeffeerrrreeddEExxeeccuuttiioonn is set
+                 to ttrruuee , transcription job requests are placed  in  a  queue
+                 until  the  number of jobs falls below the concurrent request
+                 limit. If AAlllloowwDDeeffeerrrreeddEExxeeccuuttiioonn is set to ffaallssee and the num-
+                 ber  of  transcription job requests exceed the concurrent re-
+                 quest limit, you get a LLiimmiittEExxcceeeeddeeddEExxcceeppttiioonn error.
+
+                 If you include AAlllloowwDDeeffeerrrreeddEExxeeccuuttiioonn in  your  request,  you
+                 must also include DDaattaaAAcccceessssRRoolleeAArrnn .
+
+              DataAccessRoleArn -> (string)
+                 The  Amazon  Resource Name (ARN) of an IAM role that has per-
+                 missions to access the Amazon S3 bucket  that  contains  your
+                 input files. If the role that you specify doesnt have the ap-
+                 propriate permissions to access the specified Amazon S3 loca-
+                 tion, your request fails.
+
+                 IAM   role   ARNs   have  the  format  aarrnn::ppaarrttiittiioonn::iiaamm::::aacc--
+                 ccoouunntt::rroollee//rroollee--nnaammee--wwiitthh--ppaatthh      .      For       example:
+                 aarrnn::aawwss::iiaamm::::111111112222222233333333::rroollee//AAddmmiinn  . For more information,
+                 see _I_A_M _A_R_N_s .
+
+                 Note that if you include DDaattaaAAcccceessssRRoolleeAArrnn in  your  request,
+                 you must also include AAlllloowwDDeeffeerrrreeddEExxeeccuuttiioonn .
+
+          ContentRedaction -> (structure)
+              Indicates whether redaction was enabled in your transcript.
+
+              RedactionType -> (string)
+                 Specify  the  category of information you want to redact; PPIIII
+                 (personally  identifiable  information)  is  the  only  valid
+                 value.  You  can  use PPiiiiEEnnttiittyyTTyyppeess to choose which types of
+                 PII you want to redact. If you do not include  PPiiiiEEnnttiittyyTTyyppeess
+                 in your request, all PII is redacted.
+
+              RedactionOutput -> (string)
+                 Specify  if  you  want  only a redacted transcript, or if you
+                 want a redacted and an unredacted transcript.
+
+                 When you choose rreeddaacctteedd Amazon  Transcribe  creates  only  a
+                 redacted transcript.
+
+                 When  you  choose  rreeddaacctteedd__aanndd__uunnrreeddaacctteedd  Amazon Transcribe
+                 creates a redacted and an unredacted transcript (as two sepa-
+                 rate files).
+
+              PiiEntityTypes -> (list)
+                 Specify  which  types  of personally identifiable information
+                 (PII) you want to redact in your transcript. You can  include
+                 as  many  types as you'd like, or you can select AALLLL . If you
+                 do not include PPiiiiEEnnttiittyyTTyyppeess in your  request,  all  PII  is
+                 redacted.
+
+                 (string)
+
+          IdentifyLanguage -> (boolean)
+              Indicates  whether automatic language identification was enabled
+              (TTRRUUEE ) for the specified transcription job.
+
+          IdentifyMultipleLanguages -> (boolean)
+              Indicates whether automatic  multi-language  identification  was
+              enabled (TTRRUUEE ) for the specified transcription job.
+
+          LanguageOptions -> (list)
+              Provides the language codes you specified in your request.
+
+              (string)
+
+          IdentifiedLanguageScore -> (float)
+              The  confidence score associated with the language identified in
+              your media file.
+
+              Confidence scores are values between 0 and 1; a larger value in-
+              dicates  a  higher probability that the identified language cor-
+              rectly matches the language spoken in your media.
+
+          LanguageCodes -> (list)
+              The language codes used to create your transcription  job.  This
+              parameter  is  used with multi-language identification. For sin-
+              gle-language identification requests, refer to the singular ver-
+              sion of this parameter, LLaanngguuaaggeeCCooddee .
+
+              (structure)
+                 Provides  information  on  the speech contained in a discreet
+                 utterance when multi-language identification  is  enabled  in
+                 your  request.  This  utterance  represents a block of speech
+                 consisting of one language, preceded or followed by  a  block
+                 of speech in a different language.
+
+                 LanguageCode -> (string)
+                     Provides  the  language code for each language identified
+                     in your media.
+
+                 DurationInSeconds -> (float)
+                     Provides the total time, in seconds, each identified lan-
+                     guage is spoken in your media.
+
+          Tags -> (list)
+              The  tags, each in the form of a key:value pair, assigned to the
+              specified transcription job.
+
+              (structure)
+                 Adds metadata, in the form of a key:value pair, to the speci-
+                 fied resource.
+
+                 For  example, you could add the tag DDeeppaarrttmmeenntt::SSaalleess to a re-
+                 source to indicate that it pertains  to  your  organization's
+                 sales  department. You can also use tags for tag-based access
+                 control.
+
+                 To learn more about tagging, see _T_a_g_g_i_n_g _r_e_s_o_u_r_c_e_s .
+
+                 Key -> (string)
+                     The first part of a key:value pair that forms a tag asso-
+                     ciated with a given resource. For example, in the tag DDee--
+                     ppaarrttmmeenntt::SSaalleess , the key is 'Department'.
+
+                 Value -> (string)
+                     The second part of a key:value pair that forms a tag  as-
+                     sociated  with  a given resource. For example, in the tag
+                     DDeeppaarrttmmeenntt::SSaalleess , the value is 'Sales'.
+
+                     Note that you can set the value of  a  tag  to  an  empty
+                     string,  but  you  can't  set the value of a tag to null.
+                     Omitting the tag value is the  same  as  using  an  empty
+                     string.
+
+          Subtitles -> (structure)
+              Indicates  whether subtitles were generated with your transcrip-
+              tion.
+
+              Formats -> (list)
+                 Provides the format of your subtitle files. If  your  request
+                 included  both  WebVTT (vvtttt ) and SubRip (ssrrtt ) formats, both
+                 formats are shown.
+
+                 (string)
+
+              SubtitleFileUris -> (list)
+                 The Amazon S3 location of your transcript. You can  use  this
+                 URI  to  access or download your subtitle file. Your subtitle
+                 file is stored in the same location as  your  transcript.  If
+                 you  specified  both  WebVTT and SubRip subtitle formats, two
+                 URIs are provided.
+
+                 If you included OOuuttppuuttBBuucckkeettNNaammee in  your  transcription  job
+                 request, this is the URI of that bucket. If you also included
+                 OOuuttppuuttKKeeyy in your request, your output is located in the path
+                 you specified in your request.
+
+                 If  you didn't include OOuuttppuuttBBuucckkeettNNaammee in your transcription
+                 job request, your subtitle file is stored in  a  service-man-
+                 aged bucket, and TTrraannssccrriippttFFiilleeUUrrii provides you with a tempo-
+                 rary URI you can use for secure access to your subtitle file.
+
+                 NNOOTTEE::
+                     Temporary URIs for service-managed Amazon S3 buckets  are
+                     only  valid for 15 minutes. If you get an AAcccceessDDeenniieedd er-
+                     ror, you can get a new temporary URI by  running  a  GGeett--
+                     TTrraannssccrriippttiioonnJJoobb or LLiissttTTrraannssccrriippttiioonnJJoobb request.
+
+                 (string)
+
+              OutputStartIndex -> (integer)
+                 Provides  the  start  index value for your subtitle files. If
+                 you did not specify a value  in  your  request,  the  default
+                 value of 00 is used.
+
+          LanguageIdSettings -> (map)
+              Provides  the  name  and language of all custom language models,
+              custom vocabularies, and custom vocabulary filters that you  in-
+              cluded in your request.
+
+              key -> (string)
+
+              value -> (structure)
+                 If  using  automatic  language identification in your request
+                 and you want to apply a custom language model, a  custom  vo-
+                 cabulary,  or a custom vocabulary filter, include LLaanngguuaaggeeIIdd--
+                 SSeettttiinnggss with the relevant sub-parameters  (VVooccaabbuullaarryyNNaammee  ,
+                 LLaanngguuaaggeeMMooddeellNNaammee  ,  and  VVooccaabbuullaarryyFFiilltteerrNNaammee  ). Note that
+                 multi-language  identification  (IIddeennttiiffyyMMuullttiipplleeLLaanngguuaaggeess  )
+                 doesn't support custom language models.
+                     LLaanngguuaaggeeIIddSSeettttiinnggss  supports  two to five language codes.
+                     Each language code you include  can  have  an  associated
+                     custom  language model, custom vocabulary, and custom vo-
+                     cabulary filter. The language codes that you specify must
+                     match  the  languages  of  the associated custom language
+                     models, custom vocabularies, and custom  vocabulary  fil-
+                     ters.
+
+                 It's  recommended that you include LLaanngguuaaggeeOOppttiioonnss when using
+                 LLaanngguuaaggeeIIddSSeettttiinnggss to ensure that the  correct  language  di-
+                 alect is identified. For example, if you specify a custom vo-
+                 cabulary that is in eenn--UUSS but  Amazon  Transcribe  determines
+                 that the language spoken in your media is eenn--AAUU , your custom
+                 vocabulary _i_s _n_o_t applied to your transcription. If  you  in-
+                 clude  LLaanngguuaaggeeOOppttiioonnss  and include eenn--UUSS as the only English
+                 language dialect, your custom vocabulary _i_s applied  to  your
+                 transcription.
+
+                 If  you want to include a custom language model with your re-
+                 quest but ddoo nnoott want to use automatic  language  identifica-
+                 tion,  use  instead  the parameter with the LLaanngguuaaggeeMMooddeellNNaammee
+                 sub-parameter. If you want to include a custom vocabulary  or
+                 a custom vocabulary filter (or both) with your request but ddoo
+                 nnoott want to use automatic language  identification,  use  in-
+                 stead the parameter with the VVooccaabbuullaarryyNNaammee or VVooccaabbuullaarryyFFiill--
+                 tteerrNNaammee (or both) sub-parameter.
+
+                 VocabularyName -> (string)
+                     The name of the custom vocabulary you want  to  use  when
+                     processing  your  transcription  job.  Custom  vocabulary
+                     names are case sensitive.
+
+                     The language of  the  specified  custom  vocabulary  must
+                     match  the  language  code that you specify in your tran-
+                     scription request. If the languages  do  not  match,  the
+                     custom  vocabulary  isn't applied. There are no errors or
+                     warnings associated with a language mismatch.
+
+                 VocabularyFilterName -> (string)
+                     The name of the custom vocabulary filter you want to  use
+                     when processing your transcription job. Custom vocabulary
+                     filter names are case sensitive.
+
+                     The language of the specified  custom  vocabulary  filter
+                     must  match  the  language  code that you specify in your
+                     transcription request. If the languages do not match, the
+                     custom  vocabulary filter isn't applied. There are no er-
+                     rors or warnings associated with a language mismatch.
+
+                     Note that if you include VVooccaabbuullaarryyFFiilltteerrNNaammee in your re-
+                     quest, you must also include VVooccaabbuullaarryyFFiilltteerrMMeetthhoodd .
+
+                 LanguageModelName -> (string)
+                     The  name  of  the  custom language model you want to use
+                     when processing your transcription job. Note that  custom
+                     language model names are case sensitive.
+
+                     The  language of the specified custom language model must
+                     match the language code that you specify  in  your  tran-
+                     scription  request.  If  the  languages do not match, the
+                     custom language model isn't applied. There are no  errors
+                     or warnings associated with a language mismatch.
+
+          ToxicityDetection -> (list)
+              Provides  information  about the toxicity detection settings ap-
+              plied to your transcription.
+
+              (structure)
+                 Contains TTooxxiicciittyyCCaatteeggoorriieess , which is a  required  parameter
+                 if you want to enable toxicity detection (TTooxxiicciittyyDDeetteeccttiioonn )
+                 in your transcription request.
+
+                 ToxicityCategories -> (list)
+                     If you include TTooxxiicciittyyDDeetteeccttiioonn  in  your  transcription
+                     request,  you  must also include TTooxxiicciittyyCCaatteeggoorriieess . The
+                     only accepted value for this parameter is AALLLL .
+
+                     (string)
+
+
+
+                                                     START-TRANSCRIPTION-JOB()
