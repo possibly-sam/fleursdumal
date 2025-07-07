@@ -24,11 +24,14 @@ if (!empty($selectedVoice) && !empty($inputText)) {
     $safeVoice = escapeshellarg($selectedVoice);
     
     // Replace newlines with <p/> and wrap text in SSML tags
-    $formattedText = str_replace("\n", "</p><p/>", $inputText);
-    $ssmlText = "<speak><prosody rate=\"slow\"><p/>" . $formattedText . "</p></prosody></speak>";
+    $formattedText = str_replace("\n", "</p><p>", $inputText);
+    $ssmlText = "<speak><prosody rate=\"slow\"><p>" . $formattedText . "</p></prosody></speak>";
     
     // Escape the SSML text
-    $safeText = escapeshellarg(htmlspecialchars($ssmlText));
+    // $safeText = escapeshellarg(htmlspecialchars($ssmlText));
+    // No, don't escape the SSML text, because it will be put to the shell, not an html page
+    // But do put quotes around it so the command line doesn't get confused..
+    $safeText = "'" .  $ssmlText . "'"; 
     
     $outputFile = escapeshellarg($selectedVoice . '.ogg');
 
@@ -42,6 +45,8 @@ if (!empty($selectedVoice) && !empty($inputText)) {
                "$outputFile 2>&1";
 
     $synthesisResult = shell_exec($command);
+    
+    `echo $command >> debug.log`;
 
     // Check if file was created
     if (file_exists($selectedVoice . '.ogg')) {

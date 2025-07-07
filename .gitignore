@@ -15,3 +15,6 @@ dist/
 
 # Undo-tree save-files
 *.~undo-tree
+
+# don't save all the results
+*.ogg
